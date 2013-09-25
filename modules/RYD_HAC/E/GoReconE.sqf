@@ -1,7 +1,7 @@
 _i = "";
 
 _timer = 0;
-_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))}; 
+_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))};
 _stage = _this select 2;
 
 _PosObj1 = _this select 1;
@@ -49,7 +49,7 @@ _posY = ((getPos leaderHQE) select 1) + _dYb + _dYc + (random 200) - 100;
 _MElevated = [_posX,_posY];
 _MElev = (getPosATL (nearestObject [_posX,_posY,10])) select 2;
 
-if (_unitG in RydHQE_FOG) then 
+if (_unitG in RydHQE_FOG) then
 	{
 	for [{_a = 0},{_a <= 50},{_a = _a + 1}] do
 		{
@@ -82,9 +82,9 @@ _UL = leader _unitG;
 RydHQE_VCDone = false;
 if (isPlayer _UL) then {[_UL,leaderHQE] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQE_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-if ((RydHQE_Debug) or (isPlayer (leader _unitG))) then 
+if ((RydHQE_Debug) or (isPlayer (leader _unitG))) then
 	{
-	_i = [[_posX,_posY],_unitG,"markRecon","ColorRed","ICON","DOT","Rec E"," - NON-COMBAT RECON"] call RYD_Mark;
+	_i = [[_posX,_posY],_unitG,"markRecon","ColorRed","ICON","mil_dot","Rec E"," - NON-COMBAT RECON"] call RYD_Mark;
 	};
 
 _AV = assignedVehicle _UL;
@@ -125,7 +125,7 @@ if ((isNull _AV) and (([_posX,_posY] distance _UL) > 1500) and not (isPlayer (le
 	{
 	_LX = (position _UL) select 0;
 	_LY = (position _UL) select 1;
-	
+
 	_beh = "SAFE";
 	if (_unitG in RydHQE_RAirG) then {_beh = "CARELESS"};
 	_spd = "LIMITED";
@@ -235,7 +235,7 @@ _timer2 = 0;
 while {(_nothing)} do
 	{
 	_unitG = group (leader (_this select 0));
-	if (((not (isNull (_UL findNearestEnemy _UL)) or (_timer2 > 4)) and not (isNull _unitG) and not (_unitG in RydHQE_FOG)) or ((_timer2 > 40) and not (isNull _unitG))) then 
+	if (((not (isNull (_UL findNearestEnemy _UL)) or (_timer2 > 4)) and not (isNull _unitG) and not (_unitG in RydHQE_FOG)) or ((_timer2 > 40) and not (isNull _unitG))) then
 		{
 		if (_unitG in RydHQE_NCrewInfG) then {_pass orderGetIn true};
 		sleep 15;

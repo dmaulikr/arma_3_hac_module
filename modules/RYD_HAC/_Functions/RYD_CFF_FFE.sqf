@@ -287,12 +287,12 @@ if (isNil("RYD_CFF_FFE")) then {
 				_i = createMarker [_i,_impactPos];
 				_i setMarkerColor "ColorBlack";
 				_i setMarkerShape "ICON";
-				_i setMarkerType "DOT";
+				_i setMarkerType "mil_dot";
 				_i = "mark4" + str (_battery);
 				_i = createMarker [_i,_finalimpact];
 				_i setMarkerColor "ColorRed";
 				_i setMarkerShape "ICON";
-				_i setMarkerType "DOT";
+				_i setMarkerType "mil_dot";
 				_i setMarkerText (str (round (_distance)) + "m" + "/" + str (round (_spawndisp)) + "m" + " - " + _Ammo);
 				[_i,_battery,_distance,_spawndisp,_Ammo,_batlead,_target] spawn	{
 					private ["_mark","_battery","_distance","_spawndisp","_Ammo","_target","_alive","_stoper","_TOF","_batlead"];

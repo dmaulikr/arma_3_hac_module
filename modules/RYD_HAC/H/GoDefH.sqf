@@ -1,7 +1,7 @@
 _i = "";
 
 
-_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))]}; 
+_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))]};
 _DefPos = _this select 1;
 
 if (_unitG in RydHQH_Garrison) exitwith {RydHQH_DefSpot = RydHQH_DefSpot - [_unitG];RydHQH_GoodSpots = RydHQH_GoodSpots + [_DefPos];RydHQH_Roger = true};
@@ -15,7 +15,7 @@ _angleV = _this select 5;
 //_dY = (((position leaderHQH) select 1) - (_Center select 1));
 
 
-if ((_unitG in (RydHQH_NCCargoG - RydHQH_AirG)) and ((count (units _unitG)) <= 1) or (_unitG in (RydHQH_SupportG - RydHQH_AirG))) then 
+if ((_unitG in (RydHQH_NCCargoG - RydHQH_AirG)) and ((count (units _unitG)) <= 1) or (_unitG in (RydHQH_SupportG - RydHQH_AirG))) then
 	{
 	_Xpos = ((position leaderHQH) select 0) + (random 300) - 150 - (_dX/1.25);
 	_Ypos = ((position leaderHQH) select 1) + (random 300) - 150 - (_dY/1.25);
@@ -37,7 +37,7 @@ if ((_busy) and ((_unitG in RydHQH_DefSpot) or (_unitG in RydHQH_Def))) exitwith
 [_unitG] call RYD_WPdel;
 
 _attackAllowed = attackEnabled _unitG;
-_unitG enableAttack false; 
+_unitG enableAttack false;
 
 _unitG setVariable [("Deployed" + (str _unitG)),false];_unitG setVariable [("Capt" + (str _unitG)),false];
 _unitG setVariable [("Busy" + _unitvar), true];
@@ -51,7 +51,7 @@ _isWater = surfaceIsWater _DefPos;
 
 while {((_isWater) and (leaderHQH distance _DefPos >= 10))} do
 	{
-	_PosX = ((_DefPos select 0) + ((position leaderHQH) select 0))/2; 
+	_PosX = ((_DefPos select 0) + ((position leaderHQH) select 0))/2;
 	_PosY = ((_DefPos select 1) + ((position leaderHQH) select 1))/2;
 	_DefPos = [_posX,_posY]
 	};
@@ -82,13 +82,13 @@ if not (isNull _nE) then
 
 		_CFF = false;
 
-		if (RydHQH_ArtyShells > 0) then 
+		if (RydHQH_ArtyShells > 0) then
 			{
 			_CFF = ([_pos,RydHQH_ArtG,"SMOKE",9,_UL] call RYD_ArtyMission) select 0;
 			if not (isPlayer _UL) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_SmokeReq,"SmokeReq"] call RYD_AIChatter}};
 			};
 
-		if (_CFF) then 
+		if (_CFF) then
 			{
 			if (RydHQH_ArtyShells > 0) then {if ((random 100) < RydxHQ_AIChatDensity) then {[leaderHQH,RydxHQ_AIC_ArtAss,"ArtAss"] call RYD_AIChatter}};
 			sleep 60
@@ -106,7 +106,7 @@ if not (isNull _nE) then
 RydHQH_VCDone = false;
 if (isPlayer _UL) then {[_UL,leaderHQH] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQH_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 	{
 	_clr = "ColorBrown";
 	_txt = "LMCU H";
@@ -114,7 +114,7 @@ if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 	_pltxt = " - DEFEND POSITION";
 	if (_unitG in (RydHQH_SupportG - RydHQH_AirG)) then {_pltxt = " - SUPPORT"};
 
-	_i = [_DefPos,_unitG,"markDef",_clr,"ICON","DOT",_txt,_pltxt] call RYD_Mark
+	_i = [_DefPos,_unitG,"markDef",_clr,"ICON","mil_dot",_txt,_pltxt] call RYD_Mark
 	};
 
 _AV = assignedVehicle _UL;
@@ -122,7 +122,7 @@ _AV = assignedVehicle _UL;
 _task = [(leader _unitG),["Take a defensive position as fast as possible.", "Sentry", ""],_DefPos] call RYD_AddTask;
 
 _tp = "MOVE";
-//if ((_unitG in (RydHQH_CargoG)) or (not (isNull _AV) and not (_unitG == (group (assigneddriver _AV))))) then {_tp = "UNLOAD"}; 
+//if ((_unitG in (RydHQH_CargoG)) or (not (isNull _AV) and not (_unitG == (group (assigneddriver _AV))))) then {_tp = "UNLOAD"};
 
 _frm = formation _unitG;
 if not (isPlayer (leader _unitG)) then {_frm = "FILE"};
@@ -155,9 +155,9 @@ _posY = ((getPos leaderHQH) select 1) + _dY + (random 2000) - 1000;
 
 _TED = [_posX,_posY];
 
-if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 	{
-	_i = [_TED,_unitG,"markWatch","ColorGreenAlpha","ICON","DOT","H","H",[0.2,0.2]] call RYD_Mark
+	_i = [_TED,_unitG,"markWatch","ColorGreenAlpha","ICON","mil_dot","H","H",[0.2,0.2]] call RYD_Mark
 	};
 
 _dir = [(getPosATL (vehicle (leader _unitG))),_TED,10] call RYD_AngTowards;
@@ -173,7 +173,7 @@ _UL = leader _unitG;if not (isPlayer _UL) then {if ((random 100) < RydxHQ_AIChat
 
 _alive = true;
 
-waituntil 
+waituntil
 	{
 	sleep 10;
 	_endThis = false;
@@ -183,7 +183,7 @@ waituntil
 	(_endThis)
 	};
 
-if not (_alive) exitWith 
+if not (_alive) exitWith
 	{
 	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markDef" + _unitVar);deleteMarker ("markWatch" + _unitVar)};
 	RydHQH_DefSpot = RydHQH_DefSpot - [_unitG];

@@ -140,7 +140,7 @@ if (isNil("RYD_WPadd")) then {
 						} foreach _mPoints;
 						if ((count _topPoints) > 0) then {
 							_wpn = 0;
-							{	//if (RydBB_Debug) then {_j = [_x,_gp,(str (random 1000)),"ColorPink","ICON","DOT",(str _wpn),"",[0.25,0.25]] call RYD_Mark};
+							{	//if (RydBB_Debug) then {_j = [_x,_gp,(str (random 1000)),"ColorPink","ICON","mil_dot",(str _wpn),"",[0.25,0.25]] call RYD_Mark};
 								_wpn = _wpn + 1;
 								_wp = _gp addWaypoint [_x, 0];
 								_wp setWaypointType "MOVE";

@@ -73,7 +73,7 @@ if (_BBSide == "A") then
 	//if ((_cntr select 0) < 1000) then {_cntr = getArray (configFile >> "CfgWorlds" >> worldName >> "centerPosition")};
 
 	//_mark = "center" + str (random 1000);
-	//_mark = [_mark,_cntr,"ColorBlue","ICON",[1.5,1.5],0,1,"DOT",(str _cntr)] call RYD_Marker;
+	//_mark = [_mark,_cntr,"ColorBlue","ICON",[1.5,1.5],0,1,"mil_dot",(str _cntr)] call RYD_Marker;
 
 	_lng = (_cntr select 0)*2;
 	if not (isNil "RydBB_MC") then
@@ -471,7 +471,7 @@ while {(RydBB_Active)} do
 			_valGrp = count (units _x);
 
 			//_mark = "GrpPos" + (str (random 1000));
-			//_mark = [_mark,_posGrp,"ColorGreen","ICON",[_valGrp/10,_valGrp/10],0,0.5,"DOT",(str _valGrp)] call RYD_Marker;
+			//_mark = [_mark,_posGrp,"ColorGreen","ICON",[_valGrp/10,_valGrp/10],0,0.5,"mil_dot",(str _valGrp)] call RYD_Marker;
 
 			for "_j" from 1 to _valGrp do
 				{
@@ -628,7 +628,7 @@ if ((true) and (true)) then
 				_alpha = 0.1;
 				if ((_taken) and (_BBSide == "A")) then {_color = "ColorBlue";_alpha = 0.5};
 				if ((_taken) and (_BBSide == "B")) then {_color = "ColorRed";_alpha = 0.5};
-				_mark = [_mark,_posStr,_color,"ICON",[_valStr/2,_valStr/2],0,_alpha,"DOT",(str _valStr)] call RYD_Marker;
+				_mark = [_mark,_posStr,_color,"ICON",[_valStr/2,_valStr/2],0,_alpha,"mil_dot",(str _valStr)] call RYD_Marker;
 
 				[_x,_mark,_BBSide] spawn RYD_ObjMark
 				}
@@ -1583,7 +1583,7 @@ if ((true) and (true)) then
 
 					_x setPosATL [_perX,_perY,0];
 
-					//_mark = [(str (random 1000)),[_perX,_perY,0],"ColorPink","ICON",[0.5,0.5],0,1,"DOT",(str _HQ)] call RYD_Marker;
+					//_mark = [(str (random 1000)),[_perX,_perY,0],"ColorPink","ICON",[0.5,0.5],0,1,"mil_dot",(str _HQ)] call RYD_Marker;
 					}
 				foreach [_tObj1,_tObj2,_tObj3,_tObj4];
 
@@ -2057,7 +2057,7 @@ if ((true) and (true)) then
 			_points = _points + _HQpoints;
 	/*
 				{
-				_mark = [(str (random 1000)),_x,"ColorOrange","ICON",[0.5,0.5],0,1,"DOT","R"] call RYD_Marker;
+				_mark = [(str (random 1000)),_x,"ColorOrange","ICON",[0.5,0.5],0,1,"mil_dot","R"] call RYD_Marker;
 				}
 			foreach _points;
 	*/

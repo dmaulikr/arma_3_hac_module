@@ -1,5 +1,5 @@
 // ALL
-RydHQ_Wait = 10;
+RydHQ_Wait = 5;
 RydHQ_DbgMon = true;
 RydHQ_TimeM = false;
 RydHQ_VoiceComm = true;
@@ -60,11 +60,11 @@ RydBB_BBOnMap = false;
 RydBB_MainInterval = 20;
 
 // BB A
-RydBBa_SimpleDebug = false;
+RydBBa_SimpleDebug = true;
 RydBBa_HQs = [leaderHQ];
 RydBBa_Str = [];
 
 // BB B
-RydBBb_SimpleDebug = false;
+RydBBb_SimpleDebug = true;
 RydBBb_HQs = [leaderHQB];
 RydBBb_Str = [];

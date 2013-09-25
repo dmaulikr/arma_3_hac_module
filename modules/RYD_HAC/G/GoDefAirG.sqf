@@ -38,16 +38,16 @@ _alive = true;
 while {not (_endThis)} do
 	{
 	_DefPos = [((position _Spot) select 0) + (random 1000) - 500,((position _Spot) select 1) + (random 1000) - 500];
-	if ((RydHQG_Debug) or (isPlayer (leader _unitG))) then 
+	if ((RydHQG_Debug) or (isPlayer (leader _unitG))) then
 		{
-		_i = [_DefPos,_unitG,"markDef","ColorBrown","ICON","DOT","Air G"," - DEFEND AREA"] call RYD_Mark
+		_i = [_DefPos,_unitG,"markDef","ColorBrown","ICON","mil_dot","Air G"," - DEFEND AREA"] call RYD_Mark
 		};
 
 	_task = [(leader _unitG),["Provide air cover.", "S&D", ""],_DefPos] call RYD_AddTask;
 
 	_wp = [_unitG,_DefPos,"SAD","AWARE","YELLOW","NORMAL"] call RYD_WPadd;
 
-	if (_unitG in RydHQG_BAirG) then 
+	if (_unitG in RydHQG_BAirG) then
 		{
 		_chosen = GrpNull;
 		_dstM = 5000;
@@ -66,7 +66,7 @@ while {not (_endThis)} do
 			_tX = (_tPos select 0) + (random 60) - 30;
 			_tY = (_tPos select 1) + (random 60) - 30;
 			_tZ = (_tPos select 2) + (random 10) - 5;
-			_lasT = createVehicle [_tgt, [_tX,_tY,_tZ], [], 0, "NONE"]; 
+			_lasT = createVehicle [_tgt, [_tX,_tY,_tZ], [], 0, "NONE"];
 
 			[_Trg,_lasT,_tX,_tY,_tZ] spawn
 				{
@@ -104,9 +104,9 @@ while {not (_endThis)} do
 	if not (alive (leader _unitG)) then {_endThis = true;_alive = false};
 	};
 
-if not (_alive) exitWith 
+if not (_alive) exitWith
 	{
-	if ((RydHQG_Debug) or (isPlayer (leader _unitG))) then 
+	if ((RydHQG_Debug) or (isPlayer (leader _unitG))) then
 		{
 		deleteMarker ("markDef" + _unitVar);
 		deleteMarker ("markWatch" + _unitVar);

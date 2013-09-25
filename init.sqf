@@ -15,7 +15,7 @@ MISSION_ROOT = call {
     _arr resize (count _arr - 8);
     toString _arr
 };
-diag_log format ["#%1# MISSION_ROOT = %2.",time,MISSION_ROOT];
+diag_log format ["#%1# MISSION_ROOT = '%2'",time,MISSION_ROOT];
 enableSaving[false,false];
 execNow "briefing.sqf";
 execNow "scripts\get_params.sqf";

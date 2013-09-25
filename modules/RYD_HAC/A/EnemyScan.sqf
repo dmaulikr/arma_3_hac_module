@@ -4,16 +4,16 @@ _count = 0;
 
 if (RydHQ_DebugII) then
 	{
-	waitUntil 
+	waitUntil
 		{
 		sleep 1;
-		not (isNil "RydHQ_KnEnemiesG")	
+		not (isNil "RydHQ_KnEnemiesG")
 		};
 
 		{
 		_dngr = _x getVariable "NearE";
 		if (isNil "_dngr") then {_dngr = 0};
-		_i = [(position (vehicle (leader _x))),_x,"markDanger","ColorGreen","ICON","DOT",(str _dngr),""] call RYD_Mark;
+		_i = [(position (vehicle (leader _x))),_x,"markDanger","ColorGreen","ICON","mil_dot",(str _dngr),""] call RYD_Mark;
 		_x setVariable ["RydHQ_MarkerES",true];
 		}
 	foreach RydHQ_Friends;
@@ -33,10 +33,10 @@ if (RydHQ_DebugII) then
 						{
 						_dngr = _x getVariable "NearE";
 						if (isNil "_dngr") then {_dngr = 0};
-						_mark = [(position (vehicle (leader _x))),_x,"markDanger","ColorGreen","ICON","DOT",(str _dngr),""] call RYD_Mark;
+						_mark = [(position (vehicle (leader _x))),_x,"markDanger","ColorGreen","ICON","mil_dot",(str _dngr),""] call RYD_Mark;
 						_x setVariable ["RydHQ_MarkerES",true];
 						};
-						
+
 					_dngr = _x getVariable "NearE";
 					if (isNil "_dngr") then {_dngr = 0};
 
@@ -44,7 +44,7 @@ if (RydHQ_DebugII) then
 					_cl = "ColorGreen";
 					if (_dngr > 0.1) then {_cl = "ColorOrange"};
 					if (_dngr > 0.5) then {_cl = "ColorRed"};
-					
+
 					_mark setMarkerColor _cl;
 					_mark setmarkerText (str _dngr)
 					}
@@ -107,7 +107,7 @@ while {not (isNull RydHQ)} do
 					{
 					if (_x in _LCU) then
 						{
-						if not (isPlayer (leader _x)) then 
+						if not (isPlayer (leader _x)) then
 							{
 							_frm = _x getVariable "FormChanged";
 

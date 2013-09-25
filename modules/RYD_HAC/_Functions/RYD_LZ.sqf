@@ -26,7 +26,7 @@ if (isNil("RYD_LZ")) then {
 		};
 		if (_posX > 0) then	{
 			_lz = createVehicle ["HeliHEmpty", [_posX,_posY,0], [], 0, "NONE"];
-			//_i01 = [[_posX,_posY],str (random 100),"markLZ","ColorRed","ICON","DOT","LZ",""] call RYD_Mark;
+			//_i01 = [[_posX,_posY],str (random 100),"markLZ","ColorRed","ICON","mil_dot","LZ",""] call RYD_Mark;
 		};
 		_lz
 	};

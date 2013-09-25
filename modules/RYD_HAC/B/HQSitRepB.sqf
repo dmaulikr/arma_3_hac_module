@@ -804,7 +804,7 @@ while {not ((isNull RydHQB) or (RydHQB_Surrender))} do
 				{
 				[_x] call RYD_WPdel;
 				_x setVariable [("inPanic" + (str _x)), true];
-				if (RydHQB_DebugII) then {_i = [(getPosATL (vehicle (leader _x))),_x,"markPanic","ColorYellow","ICON","DOT","B!","B!",[0.5,0.5]] call RYD_Mark};
+				if (RydHQB_DebugII) then {_i = [(getPosATL (vehicle (leader _x))),_x,"markPanic","ColorYellow","ICON","mil_dot","B!","B!",[0.5,0.5]] call RYD_Mark};
 				_x setVariable [("Busy" + (str _x)), true];
 
 				_UL = leader _x;

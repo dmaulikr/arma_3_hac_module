@@ -1,5 +1,5 @@
 
-_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))}; 
+_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))};
 _pos = position (leader _unitG);
 _LU = leader _unitG;
 _VLU = vehicle _LU;
@@ -47,7 +47,7 @@ if (not (isNil "RydHQF_SupportDecoy") and (_unitG in RydHQF_SupportG)) then
 	_posY = (_tPos select 1) + (random (2 * _tRadius)) - (_tRadius);
 	};
 
-if not (_isDecoy) then 
+if not (_isDecoy) then
 	{
 	_safedist = 1000/(0.75 + (RydHQF_Recklessness/2));
 	_behind = false;
@@ -90,20 +90,20 @@ if not (_isDecoy) then
 
 	RydHQF_Bpoint = _position;
 
-	if (not (_unitG in (RydHQF_SupportG + RydHQF_NCCargoG)) and ((random 100) >= 50) and ((_VLU distance [_Xpos,_Ypos]) > (_VLU distance leaderHQF))) then 
+	if (not (_unitG in (RydHQF_SupportG + RydHQF_NCCargoG)) and ((random 100) >= 50) and ((_VLU distance [_Xpos,_Ypos]) > (_VLU distance leaderHQF))) then
 		{
 		_position = [((position leaderHQF) select 0) + (random 400) - 200,((position leaderHQF) select 1) + (random 400) - 200]
 		}
 	else
 		{
-		if (not (_unitG in (RydHQF_NCCargoG - RydHQF_SupportG)) and ((_VLU distance [_Xpos,_Ypos]) < (_VLU distance RydHQF_Obj)) and (_behind)) then 
+		if (not (_unitG in (RydHQF_NCCargoG - RydHQF_SupportG)) and ((_VLU distance [_Xpos,_Ypos]) < (_VLU distance RydHQF_Obj)) and (_behind)) then
 			{
 			_position = [_Xpos + (random 400) - 200,_Ypos + (random 400) - 200];
 			_allowed = true;
 			}
 		else
 			{
-			if not (_unitG in (RydHQF_SupportG + RydHQF_NCCargoG)) then 
+			if not (_unitG in (RydHQF_SupportG + RydHQF_NCCargoG)) then
 				{
 				_position = [((position _VLU) select 0) + (random 200) - 100,((position _VLU) select 1) + (random 200) - 100]
 				};
@@ -116,7 +116,7 @@ if not (_isDecoy) then
 	_precision = 20;
 	_sourcesCount = 1;
 	_expression = "Meadow";
-	switch (true) do 
+	switch (true) do
 		{
 		case (_unitG in (RydHQF_NCrewInfG - RydHQF_SupportG)) : {_expression = "(1 + (2 * Houses)) * (1 + (1.5 * Forest)) * (1 + Trees) * (1 - Meadow) * (1 - (10 * sea))"};
 		case (not (_unitG in (RydHQF_NCrewInfG - RydHQF_SupportG))) : {_expression = "(1 + (2 * Meadow)) * (1 - Forest) * (1 - (0.5 * Trees)) * (1 - (10 * sea)) * (1 - (2 * Houses))"};
@@ -133,11 +133,11 @@ if not (_isDecoy) then
 
 	_sec = false;
 
-	if  ((not (_unitG in RydHQF_NCCargoG) or ((count (units _unitG)) > 1)) and not (_unitG in RydHQF_SupportG) and ((_VLU distance RydHQF_Obj) > (_VLU distance leaderHQF))) then 
+	if  ((not (_unitG in RydHQF_NCCargoG) or ((count (units _unitG)) > 1)) and not (_unitG in RydHQF_SupportG) and ((_VLU distance RydHQF_Obj) > (_VLU distance leaderHQF))) then
 		{
 		_rnd = random 100;
 
-		switch (true) do 
+		switch (true) do
 			{
 			case ((_rnd > 50) and (_rnd <= 75)) : {if not (isNil ("RydHQF_Sec1")) then {_posX = ((position RydHQF_Sec1) select 0) + (random 200) - 100;_posY = ((position RydHQF_Sec1) select 1) + (random 200) - 100};_sec = true};
 			case (_rnd > 75) : {if not (isNil ("RydHQF_Sec2")) then {_posX = ((position RydHQF_Sec2) select 0) + (random 200) - 100;_posY = ((position RydHQF_Sec2) select 1) + (random 200) - 100};_sec = true};
@@ -146,7 +146,7 @@ if not (_isDecoy) then
 
 	_NR = _pos nearRoads 400;
 	_cnt = 0;
-	if (not (_patrol) and not (_sec) and not ((random 100) < (20/(0.5 + RydHQF_Fineness))) and not ((count _NR) == 0) and not (_unitG in (RydHQF_SupportG + RydHQF_NCCargoG))) then 
+	if (not (_patrol) and not (_sec) and not ((random 100) < (20/(0.5 + RydHQF_Fineness))) and not ((count _NR) == 0) and not (_unitG in (RydHQF_SupportG + RydHQF_NCCargoG))) then
 		{
 		while {(true)} do
 			 {
@@ -180,7 +180,7 @@ if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then
 	{
 	_pltxt = " - HOLD POSITION";
 	if (_patrol) then {_pltxt = " - PATROL AREA"};
-	_i = [[_posX,_posY],_unitG,"markIdle","ColorRedAlpha","ICON","DOT","Res F",_pltxt,[0.5,0.5]] call RYD_Mark;
+	_i = [[_posX,_posY],_unitG,"markIdle","ColorRedAlpha","ICON","mil_dot","Res F",_pltxt,[0.5,0.5]] call RYD_Mark;
 	};
 
 _task = taskNull;
@@ -200,7 +200,7 @@ if (_unitG in RydHQF_AirG) then {_sts = ["true", "{(vehicle _x) land 'LAND'} for
 
 _wp = [_unitG,[_posX,_posY],_tp,"SAFE",_CM,_spd,_sts] call RYD_WPadd;
 
-if (_patrol) then 
+if (_patrol) then
 	{
 	[_unitG] call RYD_WPdel;
 
@@ -231,7 +231,7 @@ if (_patrol) then
 
 		_isWater = surfaceIsWater [_posX,_posY];
 
-		if not (_isWater) then 
+		if not (_isWater) then
 			{
 			_task = [(leader _unitG),["Patrol area.", "Move", ""],[_posX,_posY]] call RYD_AddTask;
 
@@ -251,7 +251,7 @@ _timer = _cause select 0;
 _alive = _cause select 1;
 _busy = _cause select 3;
 
-if (not (_patrol) and not (_busy) and (_alive)) then 
+if (not (_patrol) and not (_busy) and (_alive)) then
 	{
 	_UL = leader _unitG;if not (isPlayer _UL) then {if (_timer <= 24) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdFinal,"OrdFinal"] call RYD_AIChatter}}};
 	_frm = formation _unitG;
@@ -267,7 +267,7 @@ if not (((vehicle _LU) == _LU) and not (isPlayer _LU) and not (isPlayer (driver 
 
 if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markIdle" + str (_unitG))};
 
-if (_alive) then 
+if (_alive) then
 	{
 	_cause = [_unitG,6,false,0,0,[],true,true,false,true] call RYD_Wait;
 	_alive = _cause select 1;

@@ -4,7 +4,7 @@ _unitG = _this select 0;
 
 _Spos = _unitG getvariable ("START" + (str _unitG));
 if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))};
- 
+
 _Trg = _this select 1;
 
 _isAttacked = (group _Trg) getvariable ("InfAttacked" + (str (group _Trg)));
@@ -62,7 +62,7 @@ while {((_isWater) and (([_posX,_posY] distance _PosObj1) >= 50))} do
 
 _isWater = surfaceIsWater [_posX,_posY];
 
-if (_isWater) exitwith 
+if (_isWater) exitwith
 	{
 	RydHQF_AttackAv = RydHQF_AttackAv + [(_unitG)];
 	_unitG setVariable [("Busy" + (str _unitG)),false];
@@ -75,16 +75,16 @@ _UL = leader _unitG;
 RydHQF_VCDone = false;
 if (isPlayer _UL) then {[_UL,leaderHQF] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQF_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then 
+if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then
 	{
-	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","DOT","Inf F"," - ATTACK"] call RYD_Mark
+	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","mil_dot","Inf F"," - ATTACK"] call RYD_Mark
 	};
 
 _CargoCheck = _unitG getvariable ("CC" + _unitvar);
 if (isNil ("_CargoCheck")) then {_unitG setVariable [("CC" + _unitvar), false]};
 _AV = assignedVehicle _UL;
 if ((RydHQF_CargoFind > 0) and (isNull _AV) and (([_posX,_posY] distance (vehicle _UL)) > 1000)) then {[_unitG] spawn F_SCargo } else {_unitG setVariable [("CC" + _unitvar), true]};
-if (RydHQF_CargoFind > 0) then 
+if (RydHQF_CargoFind > 0) then
 	{
 	waituntil {sleep 0.05;(_unitG getvariable ("CC" + _unitvar))};
 	_unitG setVariable [("CC" + _unitvar), false];
@@ -169,7 +169,7 @@ _tp = "MOVE";
 //if (not (isNull _AV) and (_unitG in RydHQF_NCrewInfG) and not ((_GDV == _unitG) or (_GDV in RydHQF_AirG))) then {_tp = "UNLOAD"};
 _beh = "SAFE";
 _lz = objNull;
-if (not (isNull _AV) and (_GDV in RydHQF_AirG)) then 
+if (not (isNull _AV) and (_GDV in RydHQF_AirG)) then
 	{
 	_beh = "CARELESS";
 	if (RydHQF_LZ) then
@@ -199,8 +199,8 @@ _wp = [_gp,_pos,_tp,_beh,"YELLOW",_spd,_sts,_crr,0,_TO] call RYD_WPadd;
 if ((RydxHQ_SynchroAttack) and not (_halfway)) then
 	{
 	[_wp,_Trg] call RYD_WPSync;
-	 
-	 
+
+
 	};
 
 _DAV = assigneddriver _AV;
@@ -210,7 +210,7 @@ _alive = false;
 _enemy = false;
 _timer = 0;
 
-if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then 
+if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then
 	{
 	_OtherGroup = true;
 
@@ -219,7 +219,7 @@ if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then
 	_alive = _cause select 1;
 	_enemy = _cause select 2
 	}
-else 
+else
 	{
 	_cause = [_unitG,6,true,400,30,[RydHQF_AirG,RydHQF_KnEnemiesG],false] call RYD_Wait;
 	_timer = _cause select 0;
@@ -230,13 +230,13 @@ else
 _DAV = assigneddriver _AV;
 if (((_timer > 30) or (_enemy)) and (_OtherGroup)) then {if not (isNull _GDV) then {[_GDV, (currentWaypoint _GDV)] setWaypointPosition [position (vehicle (leader _GDV)), 0]}};
 if (((_timer > 30) or (_enemy)) and not (_OtherGroup)) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle _UL), 0]};
-if (not (_alive) and not (_OtherGroup)) exitwith 
+if (not (_alive) and not (_OtherGroup)) exitwith
 	{
 	if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	[_Trg,"InfAttacked"] call RYD_VarReductor
 	};
 
-if (isNull (leader (_this select 0))) exitwith 
+if (isNull (leader (_this select 0))) exitwith
 	{
 	if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	if not (isNull _GDV) then {[_GDV, (currentWaypoint _GDV)] setWaypointPosition [position (vehicle (leader _GDV)), 0];_GDV setVariable [("Busy" + _unitvar), false];};
@@ -248,7 +248,7 @@ _UL = leader _unitG;if not (isPlayer _UL) then {if (not (_halfway) and (_timer <
 _AV = assignedVehicle _UL;
 _pass = assignedCargo _AV;
 _allowed = true;
-if not ((_GDV == _unitG) or (isNull _GDV)) then 
+if not ((_GDV == _unitG) or (isNull _GDV)) then
 	{
 	//{unassignVehicle _x} foreach (units _unitG);
 	_pass orderGetIn false;
@@ -269,7 +269,7 @@ if (not (isNull _AV) and (RydHQF_CargoFind > 0) and (_unitG in RydHQF_NCrewInfG)
 	_timer = _cause select 0
 	};
 
-if not ((_GDV == _unitG) or (isNull _GDV)) then 
+if not ((_GDV == _unitG) or (isNull _GDV)) then
 	{
 	{unassignVehicle _x} foreach (units _unitG);
 	};
@@ -282,7 +282,7 @@ if ((isPlayer (leader _GDV)) and not (isMultiplayer)) then {(leader _GDV) remove
 
 _unitvar = str _GDV;
 
-if ((isNull (leader (_this select 0))) or (_timer > 240)) exitwith 
+if ((isNull (leader (_this select 0))) or (_timer > 240)) exitwith
 	{
 	if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	if not (isNull _GDV) then {[_GDV, (currentWaypoint _GDV)] setWaypointPosition [position (vehicle (leader _GDV)), 0];_GDV setVariable [("Busy" + _unitvar), false];_pass orderGetIn true};
@@ -310,15 +310,15 @@ if (_halfway) then
 	if (RydxHQ_SynchroAttack) then
 		{
 		[_wp,_Trg] call RYD_WPSync;
-		 
-		 
+
+
 		};
 
 	_cause = [_unitG,6,true,0,30,[],false] call RYD_Wait;
 	_timer = _cause select 0;
 	_alive = _cause select 1;
 
-	if not (_alive) exitwith 
+	if not (_alive) exitwith
 		{
 		if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 		};
@@ -358,7 +358,7 @@ _cause = [_unitG,6,true,0,30,[],false] call RYD_Wait;
 _timer = _cause select 0;
 _alive = _cause select 1;
 
-if not (_alive) exitwith 
+if not (_alive) exitwith
 	{
 	if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	[_Trg,"InfAttacked"] call RYD_VarReductor
@@ -383,7 +383,7 @@ if (_unitG in RydHQF_Garrison) then
 			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
 			}
 		};
-	
+
 	_wp = [_unitG,_Spos,"MOVE","SAFE","YELLOW","NORMAL",["true","deletewaypoint [(group this), 0];"],true,5] call RYD_WPadd;
 
 	_cause = [_unitG,6,true,0,30,[],false] call RYD_Wait;

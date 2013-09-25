@@ -1,4 +1,4 @@
-_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(getPosATL (vehicle (leader _unitG))),true]}; 
+_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(getPosATL (vehicle (leader _unitG))),true]};
 _Trg = _this select 1;
 _trgPos = getPosATL _Trg;
 _trgG = _this select 2;
@@ -21,7 +21,7 @@ _Epos1 = [];
 
 if (isNil ("RydHQH_Obj")) then {_default = position leaderHQH} else {_default = position RydHQH_Obj};
 
-if not ((count RydHQH_KnEnemies) == 0) then 
+if not ((count RydHQH_KnEnemies) == 0) then
 	{
 		{
 		_Epos0 = _Epos0 + [((getPosATL _x) select 0)];
@@ -35,7 +35,7 @@ _Epos0Min = _default select 0;
 _sel0Max = 0;
 _sel0Min = 0;
 
-for [{_a = 0},{_a < (count _Epos0)},{_a = _a + 1}] do 
+for [{_a = 0},{_a < (count _Epos0)},{_a = _a + 1}] do
 	{
 	_EposA = _Epos0 select _a;
 	if (_a == 0) then {_Epos0Min = _EposA;_sel0Min = _a};
@@ -49,7 +49,7 @@ _Epos1Min = _default select 1;
 _sel1Max = 1;
 _sel1Min = 1;
 
-for [{_b = 0},{_b < (count _Epos1)},{_b = _b + 1}] do 
+for [{_b = 0},{_b < (count _Epos1)},{_b = _b + 1}] do
 	{
 	_EposB = _Epos1 select _b;
 	if (_b == 0) then {_Epos1Min = _EposB;_sel1Min = _b};
@@ -64,7 +64,7 @@ _min0Enemy = leaderHQH;
 _max1Enemy = leaderHQH;
 _min1Enemy = leaderHQH;
 
-if not (isNil ("RydHQH_Obj")) then 
+if not (isNil ("RydHQH_Obj")) then
 	{
 	_max0Enemy = RydHQH_Obj;
 	_min0Enemy = RydHQH_Obj;
@@ -73,7 +73,7 @@ if not (isNil ("RydHQH_Obj")) then
 	_min1Enemy = RydHQH_Obj
 	};
 
-if not ((count RydHQH_KnEnemies) == 0) then 
+if not ((count RydHQH_KnEnemies) == 0) then
 	{
 	_max0Enemy = RydHQH_KnEnemies select _sel0Max;
 	_min0Enemy = RydHQH_KnEnemies select _sel0Min;
@@ -90,7 +90,7 @@ _dY = (_Posmid1) - ((getPosATL leaderHQH) select 1);
 
 _angle0 = _dX atan2 _dY;
 
-if (_angle0 < 0) then {_angle0 = _angle0 + 360}; 
+if (_angle0 < 0) then {_angle0 = _angle0 + 360};
 
 _BEnemyPosA = [];
 _BEnemyPosB = [];
@@ -139,7 +139,7 @@ _dY = _BEposY - ((getPosATL leaderHQH) select 1);
 
 _angle = _dX atan2 _dY;
 
-if (_angle < 0) then {_angle = _angle + 360};  
+if (_angle < 0) then {_angle = _angle + 360};
 _h = 1;
 if ((_angle0 > 45) and (_angle0 <= 225)) then {_h = - 1};
 
@@ -222,7 +222,7 @@ _isWater = surfaceIsWater [_posXWP4,_posYWP4];
 
 if (_isWater) exitwith {_unitG setVariable [("Busy" + (str _unitG)),false]};
 
-if ((leaderHQH distance [_posXWP1,_posYWP1]) > (leaderHQH distance [_posXWP2,_posYWP2])) then 
+if ((leaderHQH distance [_posXWP1,_posYWP1]) > (leaderHQH distance [_posXWP2,_posYWP2])) then
 	{
 	_posXWP2 = _posXWP1 - _safeX2;
 	_posYWP2 = _posYWP1 - _safeY2;
@@ -260,20 +260,20 @@ if ((_ammo > 0) and not (_busy)) then
 	RydHQH_VCDone = false;
 	if (isPlayer _UL) then {[_UL,leaderHQH] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQH_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-	
-	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+
+	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 		{
-		_i1 = [[_posXWP1,_posYWP1],_unitG,"markSFFlank1","ColorOrange","ICON","DOT","SF1 H"," - SF FLANK 1"] call RYD_Mark;
-		_i2 = [[_posXWP2,_posYWP2],_unitG,"markSFFlank2","ColorOrange","ICON","DOT","SF2 H"," - SF FLANK 2"] call RYD_Mark;
-		_i3 = [[_posXWP3,_posYWP3],_unitG,"markSFFlank3","ColorOrange","ICON","DOT","SF3 H"," - SF FLANK 3"] call RYD_Mark;
-		_i4 = [[_posXWP4,_posYWP4],_unitG,"markSFFlank4","ColorOrange","ICON","DOT","SF4 H"," - SF ATTACK"] call RYD_Mark
+		_i1 = [[_posXWP1,_posYWP1],_unitG,"markSFFlank1","ColorOrange","ICON","mil_dot","SF1 H"," - SF FLANK 1"] call RYD_Mark;
+		_i2 = [[_posXWP2,_posYWP2],_unitG,"markSFFlank2","ColorOrange","ICON","mil_dot","SF2 H"," - SF FLANK 2"] call RYD_Mark;
+		_i3 = [[_posXWP3,_posYWP3],_unitG,"markSFFlank3","ColorOrange","ICON","mil_dot","SF3 H"," - SF FLANK 3"] call RYD_Mark;
+		_i4 = [[_posXWP4,_posYWP4],_unitG,"markSFFlank4","ColorOrange","ICON","mil_dot","SF4 H"," - SF ATTACK"] call RYD_Mark
 		};
 
 	_CargoCheck = _unitG getvariable ("CC" + _unitvar);
 	if (isNil ("_CargoCheck")) then {_unitG setVariable [("CC" + _unitvar), false]};
 	_AV = assignedVehicle _UL;
 	if ((RydHQH_CargoFind > 0) and (isNull _AV) and (([_posXWP4,_posYWP4] distance (vehicle _UL)) > 1000)) then {[_unitG] spawn H_SCargo } else {_unitG setVariable [("CC" + _unitvar), true]};
-	if (RydHQH_CargoFind > 0) then 
+	if (RydHQH_CargoFind > 0) then
 		{
 		waituntil {sleep 0.05;(_unitG getvariable ("CC" + _unitvar))};
 		_unitG setVariable [("CC" + _unitvar), false];
@@ -332,7 +332,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_GDV = group _DAV;
 	_enemy = false;
 
-	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then 
+	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then
 		{
 		_OtherGroup = true;
 
@@ -341,7 +341,7 @@ if ((_ammo > 0) and not (_busy)) then
 		_alive = _cause select 1;
 		_enemy = _cause select 2
 		}
-	else 
+	else
 		{
 		_cause = [_unitG,6,true,300,30,[RydHQH_AirG,RydHQH_KnEnemiesG],false] call RYD_Wait;
 		_timer = _cause select 0;
@@ -403,7 +403,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_GDV = group _DAV;
 	_enemy = false;
 
-	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then 
+	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then
 		{
 		_OtherGroup = true;
 
@@ -412,7 +412,7 @@ if ((_ammo > 0) and not (_busy)) then
 		_alive = _cause select 1;
 		_enemy = _cause select 2
 		}
-	else 
+	else
 		{
 		_cause = [_unitG,6,true,300,30,[RydHQH_AirG,RydHQH_KnEnemiesG],false] call RYD_Wait;
 		_timer = _cause select 0;
@@ -464,7 +464,7 @@ if ((_ammo > 0) and not (_busy)) then
 	if not (isNull _AV) then {_grp = _GDV};
 	_beh = "AWARE";
 	_lz = objNull;
-	if (not (isNull _AV) and (_GDV in RydHQH_AirG)) then 
+	if (not (isNull _AV) and (_GDV in RydHQH_AirG)) then
 		{
 		_beh = "CARELESS";
 		if (RydHQH_LZ) then
@@ -493,7 +493,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_GDV = group _DAV;
 	_enemy = false;
 
-	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then 
+	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then
 		{
 		_OtherGroup = true;
 
@@ -502,7 +502,7 @@ if ((_ammo > 0) and not (_busy)) then
 		_alive = _cause select 1;
 		_enemy = _cause select 2
 		}
-	else 
+	else
 		{
 		_cause = [_unitG,6,true,400,30,[RydHQH_AirG,RydHQH_KnEnemiesG],false] call RYD_Wait;
 		_timer = _cause select 0;
@@ -519,7 +519,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_AV = assignedVehicle _UL;
 	_pass = assignedCargo _AV;
 	_allowed = true;
-	if not ((_GDV == _unitG) or (isNull _GDV)) then 
+	if not ((_GDV == _unitG) or (isNull _GDV)) then
 		{
 		//{unassignVehicle _x} foreach (units _unitG);
 		_pass orderGetIn false;
@@ -535,7 +535,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_GDV = group _DAV;
 
 	if (not (isNull _AV) and (RydHQH_CargoFind > 0) and (_unitG in RydHQH_NCrewInfG)) then
-		{	
+		{
 		_cause = [_unitG,1,false,0,240,[],true,true,false,false,false,false] call RYD_Wait;
 		_timer = _cause select 0
 		};
@@ -544,7 +544,7 @@ if ((_ammo > 0) and not (_busy)) then
 
 	if (RydHQH_LZ) then {deleteVehicle _lz};
 
-	if not ((_GDV == _unitG) or (isNull _GDV)) then 
+	if not ((_GDV == _unitG) or (isNull _GDV)) then
 		{
 		{unassignVehicle _x} foreach (units _unitG);
 		};
@@ -584,7 +584,7 @@ if ((_ammo > 0) and not (_busy)) then
 
 	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then {_i3 setMarkerColor "ColorBlue"};
 
-	if not (isPlayer (leader _unitG)) then 
+	if not (isPlayer (leader _unitG)) then
 		{
 		_frm = "WEDGE";
 
@@ -597,9 +597,9 @@ if ((_ammo > 0) and not (_busy)) then
 		_timer = _cause select 0;
 		_alive = _cause select 1;
 
-		if not (_alive) exitwith 
+		if not (_alive) exitwith
 			{
-			if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+			if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 				{
 					{
 					deleteMarker _x
@@ -627,9 +627,9 @@ if ((_ammo > 0) and not (_busy)) then
 	_timer = _cause select 0;
 	_alive = _cause select 1;
 
-	if not (_alive) exitwith 
+	if not (_alive) exitwith
 		{
-		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 			{
 				{
 				deleteMarker _x
@@ -640,7 +640,7 @@ if ((_ammo > 0) and not (_busy)) then
 
 	if (_timer > 300) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle _UL), 0];[_unitG] call RYD_ResetAI};
 
-	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 		{
 			{
 			deleteMarker _x
@@ -674,9 +674,9 @@ if ((_ammo > 0) and not (_busy)) then
 	_timer = _cause select 0;
 	_alive = _cause select 1;
 
-	if not (_alive) exitwith 
+	if not (_alive) exitwith
 		{
-		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 			{
 				{
 				deleteMarker _x
@@ -685,7 +685,7 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		};
 
-	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 		{
 			{
 			deleteMarker _x
@@ -711,9 +711,9 @@ if ((_ammo > 0) and not (_busy)) then
 	_timer = _cause select 0;
 	_alive = _cause select 1;
 
-	if not (_alive) exitwith 
+	if not (_alive) exitwith
 		{
-		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 			{
 				{
 				deleteMarker _x
@@ -722,7 +722,7 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		};
 
-	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 		{
 			{
 			deleteMarker _x
@@ -748,9 +748,9 @@ if ((_ammo > 0) and not (_busy)) then
 	_timer = _cause select 0;
 	_alive = _cause select 1;
 
-	if not (_alive) exitwith 
+	if not (_alive) exitwith
 		{
-		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 			{
 				{
 				deleteMarker _x
@@ -759,7 +759,7 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		};
 
-	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
+	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
 		{
 			{
 			deleteMarker _x
@@ -771,4 +771,4 @@ if ((_ammo > 0) and not (_busy)) then
 	_unitG setVariable [("Busy" + _unitvar), false];
 
 	_UL = leader _unitG;if not (isPlayer _UL) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdEnd,"OrdEnd"] call RYD_AIChatter}};
-	};	
+	};

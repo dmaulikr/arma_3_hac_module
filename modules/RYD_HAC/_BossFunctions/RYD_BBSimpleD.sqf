@@ -26,13 +26,13 @@ if (isNil("RYD_BBSimpleD")) then {
 					_ens = RydHQ_KnEnPos;
 					_frs = RydHQ_Friends;
 					switch (_x) do {
-						case (leaderHQB) : {_ens = RydHQB_KnEnPos;_frs = RydHQB_Friends};
-						case (leaderHQC) : {_ens = RydHQC_KnEnPos;_frs = RydHQC_Friends};
-						case (leaderHQD) : {_ens = RydHQD_KnEnPos;_frs = RydHQD_Friends};
-						case (leaderHQE) : {_ens = RydHQE_KnEnPos;_frs = RydHQE_Friends};
-						case (leaderHQF) : {_ens = RydHQF_KnEnPos;_frs = RydHQF_Friends};
-						case (leaderHQG) : {_ens = RydHQG_KnEnPos;_frs = RydHQG_Friends};
-						case (leaderHQH) : {_ens = RydHQH_KnEnPos;_frs = RydHQH_Friends};
+						case (not (isNull leaderHQB) && leaderHQB) : {_ens = RydHQB_KnEnPos;_frs = RydHQB_Friends};
+						case (not (isNull leaderHQC) && leaderHQC) : {_ens = RydHQC_KnEnPos;_frs = RydHQC_Friends};
+						case (not (isNull leaderHQD) && leaderHQD) : {_ens = RydHQD_KnEnPos;_frs = RydHQD_Friends};
+						case (not (isNull leaderHQE) && leaderHQE) : {_ens = RydHQE_KnEnPos;_frs = RydHQE_Friends};
+						case (not (isNull leaderHQF) && leaderHQF) : {_ens = RydHQF_KnEnPos;_frs = RydHQF_Friends};
+						case (not (isNull leaderHQG) && leaderHQG) : {_ens = RydHQG_KnEnPos;_frs = RydHQG_Friends};
+						case (not (isNull leaderHQH) && leaderHQH) : {_ens = RydHQH_KnEnPos;_frs = RydHQH_Friends};
 					};
 					_enPos = _enPos + _ens;
 				};
@@ -62,7 +62,7 @@ if (isNil("RYD_BBSimpleD")) then {
 						_angle = [_lPos,_frCenter,5] call RYD_AngTowards;
 						_arrow = (group _x) getVariable ["ArrowMark",""];
 						if (_arrow == "") then {
-							_arrow = [_frCenter,(group _x),"markArrow",_colorArr,"ICON","Arrow","","",[({alive (leader _x)} count _frs)/10,_lng/500],_angle] call RYD_Mark;
+							_arrow = [_frCenter,(group _x),"markArrow",_colorArr,"ICON","mil_arrow","","",[({alive (leader _x)} count _frs)/10,_lng/500],_angle] call RYD_Mark;
 							(group _x) setVariable ["ArrowMark",_arrow];
 						}else{
 							_arrow setMarkerPos _frCenter;
