@@ -1,0 +1,42 @@
+/* Name: description.ext
+ * Description: http://community.bistudio.com/wiki/Description.ext
+ * Author: vigil.vindex@gmail.com
+ * Licence: https://creativecommons.org/licenses/by-sa/3.0/
+ * Last Updated: 2013/08/29
+ */
+author = "VigilVindex"; // http://community.bistudio.com/wiki/Description.ext#author
+onLoadName = "RYD_HAC"; // http://community.bistudio.com/wiki/Description.ext#onLoadName
+onLoadMission = "Hetman Artificial Commander."; // http://community.bistudio.com/wiki/Description.ext#onLoadMission
+//loadScreen = "logo.jpg"; // http://community.bistudio.com/wiki/Description.ext#loadScreen
+
+class Header { // http://community.bistudio.com/wiki/Description.ext#header
+  gameType = COOP;
+  minPlayers = 1;
+  maxPlayers = 32;
+  playerCountMultipleOf = 1;
+};
+
+respawn = 3; // http://community.bistudio.com/wiki/Description.ext#respawn
+respawndelay = 3; // http://community.bistudio.com/wiki/Description.ext#respawnDelay
+respawnDialog = 0; // http://community.bistudio.com/wiki/Description.ext#respawnDialog
+
+briefing = 1; // http://community.bistudio.com/wiki/Description.ext#briefing
+
+aiKills = 0; // http://community.bistudio.com/wiki/Description.ext#aiKills
+disabledAI = 1; // http://community.bistudio.com/wiki/Description.ext#disabledAI
+
+disableChannels[] = {}; // http://community.bistudio.com/wiki/Description.ext#disableChannels
+
+enableItemsDropping = 0; // http://community.bistudio.com/wiki/Description.ext#enableItemsDropping
+showCompass = 1; // http://community.bistudio.com/wiki/Description.ext#showCompass
+showGPS = 1; // http://community.bistudio.com/wiki/Description.ext#showGPS
+showMap = 1; // http://community.bistudio.com/wiki/Description.ext#showMap
+showWatch = 1; // http://community.bistudio.com/wiki/Description.ext#showWatch
+
+joinUnassigned = 0; // http://community.bistudio.com/wiki/Description.ext#joinUnassigned
+allowFunctionsLog = 1; //http://community.bistudio.com/wiki/Description.ext#allowFunctionsLog
+enableDebugConsole = 1; //http://community.bistudio.com/wiki/Description.ext#enableDebugConsole
+
+saving = 0; // ?
+
+#include <config.h>

@@ -1,0 +1,341 @@
+version=12;
+class Mission
+{
+	addOns[]=
+	{
+		"A3_Characters_F_BLUFOR",
+		"A3_Characters_F_OPFOR",
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"A3_Characters_F_BLUFOR",
+		"A3_Characters_F_OPFOR",
+		"a3_map_altis"
+	};
+	randomSeed=4721546;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+	class Groups
+	{
+		items=4;
+		class Item0
+		{
+			side="WEST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={14187.842,18.026375,15748.403};
+					azimut=85.475098;
+					id=0;
+					side="WEST";
+					vehicle="B_Soldier_TL_F";
+					leader=1;
+					rank="COLONEL";
+					skill=0.60000002;
+					text="LeaderHQ";
+				};
+			};
+		};
+		class Item1
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={12190.854,0.015114621,24936.852};
+					id=1;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="RydBBa_SAL";
+				};
+			};
+		};
+		class Item2
+		{
+			side="LOGIC";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={17781.787,0.0027396185,25233.24};
+					id=2;
+					side="LOGIC";
+					vehicle="Logic";
+					leader=1;
+					skill=0.60000002;
+					text="RydBBb_SAL";
+				};
+			};
+		};
+		class Item3
+		{
+			side="EAST";
+			class Vehicles
+			{
+				items=1;
+				class Item0
+				{
+					position[]={15565.015,18.734272,16875.816};
+					azimut=-105.596;
+					id=3;
+					side="EAST";
+					vehicle="O_Soldier_TL_F";
+					leader=1;
+					rank="COLONEL";
+					skill=0.60000002;
+					text="LeaderHQB";
+				};
+			};
+		};
+	};
+	class Sensors
+	{
+		items=11;
+		class Item0
+		{
+			position[]={14859.373,17.956429,16504.82};
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydHQ_Obj1";
+			name="RydHQ_Obj1";
+			class Effects
+			{
+			};
+		};
+		class Item1
+		{
+			position[]={14861.846,17.93,16387.713};
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydHQ_Obj2";
+			name="RydHQ_Obj2";
+			class Effects
+			{
+			};
+		};
+		class Item2
+		{
+			position[]={14852.717,17.932865,16273.773};
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydHQ_Obj3";
+			name="RydHQ_Obj3";
+			class Effects
+			{
+			};
+		};
+		class Item3
+		{
+			position[]={14857.287,18.777672,16168.27};
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydHQ_Obj4";
+			name="RydHQ_Obj4";
+			class Effects
+			{
+			};
+		};
+		class Item4
+		{
+			position[]={14971.432,17.950001,16506.367};
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydHQB_Obj1";
+			name="RydHQB_Obj1";
+			class Effects
+			{
+			};
+		};
+		class Item5
+		{
+			position[]={14973.604,18.007256,16392.609};
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydHQB_Obj2";
+			name="RydHQB_Obj2";
+			class Effects
+			{
+			};
+		};
+		class Item6
+		{
+			position[]={14969.99,17.759502,16280.121};
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydHQB_Obj3";
+			name="RydHQB_Obj3";
+			class Effects
+			{
+			};
+		};
+		class Item7
+		{
+			position[]={14966.66,17.605396,16165.508};
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydHQB_Obj4";
+			name="RydHQB_Obj4";
+			class Effects
+			{
+			};
+		};
+		class Item8
+		{
+			position[]={14860.875,17.912664,16611.123};
+			interruptable=1;
+			age="UNKNOWN";
+			text="HET_FA";
+			name="HET_FA";
+			class Effects
+			{
+			};
+		};
+		class Item9
+		{
+			position[]={14975.5,17.88542,16613.531};
+			interruptable=1;
+			age="UNKNOWN";
+			text="HET_FB";
+			name="HET_FB";
+			class Effects
+			{
+			};
+		};
+		class Item10
+		{
+			position[]={15529.954,15.630146,16123.536};
+			a=3000;
+			b=3000;
+			rectangular=1;
+			interruptable=1;
+			age="UNKNOWN";
+			text="RydBB_MC";
+			name="RydBB_MC";
+			class Effects
+			{
+			};
+		};
+	};
+};
+class Intro
+{
+	addOns[]=
+	{
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=5195791;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
+class OutroWin
+{
+	addOns[]=
+	{
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=6338215;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
+class OutroLoose
+{
+	addOns[]=
+	{
+		"a3_map_altis"
+	};
+	addOnsAuto[]=
+	{
+		"a3_map_altis"
+	};
+	randomSeed=11472611;
+	class Intel
+	{
+		timeOfChanges=1800.0002;
+		startWeather=0.30000001;
+		startWind=0.1;
+		startWaves=0.1;
+		forecastWeather=0.30000001;
+		forecastWind=0.1;
+		forecastWaves=0.1;
+		forecastLightnings=0.1;
+		year=2035;
+		month=6;
+		day=24;
+		hour=12;
+		minute=0;
+		startFogBase=0.001;
+		forecastFogBase=0.001;
+		startFogDecay=0.0049999999;
+		forecastFogDecay=0.0049999999;
+	};
+};
