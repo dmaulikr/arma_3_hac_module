@@ -8,7 +8,7 @@ if (isMultiplayer) then	{
 	_gpL = creategroup sideLogic;
 	BIS_missionScope = _gpL createUnit ["Logic", [1000,1000], [], 0, "NONE"];
 	publicVariable "BIS_missionScope";
-	waitUntil{not (isNil "BIS_MPF_InitDone")}
+	//waitUntil{not (isNil "BIS_MPF_InitDone")}
 };
 RydHQ_Fronts = false;
 [] execVM "modules\RYD_HAC\Front.sqf";

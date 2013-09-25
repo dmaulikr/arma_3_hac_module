@@ -20,4 +20,4 @@ if (isNil("RYD_PosTowards2D")) then {
 		_pz = getTerrainHeightASL [_px,_py];
 		[_px,_py,_pz]
 	};
-}:
+};

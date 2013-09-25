@@ -1,4 +1,5 @@
 // A3
+RHQ_SpecFor_A3 = [];
 RHQ_Recon_A3 = [
 	"B_recon_TL_F",
 	"B_recon_exp_F",

@@ -12,7 +12,7 @@ loadScreen = "logo.jpg"; // http://community.bistudio.com/wiki/Description.ext#l
 class Header { // http://community.bistudio.com/wiki/Description.ext#header
   gameType = COOP;
   minPlayers = 1;
-  maxPlayers = 32;
+  maxPlayers = 2;
   playerCountMultipleOf = 1;
 };
 

@@ -2,7 +2,7 @@ _UL = _this select 0;
 _HQ = _this select 1;
 if not (isMultiplayer) then {
 	if (not (_UL kbHasTopic "orders")) then {
-		_UL kbAddTopic ["orders","RYD_HAC\topics.bikb",""];
+		_UL kbAddTopic ["orders","modules\RYD_HAC\topics.bikb",""];
 		waituntil {(_UL kbHasTopic "orders")};
 	};
 	_UL kbTell [_HQ, "orders", "First", true];
@@ -19,7 +19,7 @@ if not (isMultiplayer) then {
 	};
 }else{
 	if (not (_UL kbHasTopic "orders")) then {
-		[objNull,_UL,"loc",rKBADDTOPIC,"orders","RYD_HAC\topics.bikb",""] call RE;
+		[objNull,_UL,"loc",rKBADDTOPIC,"orders","modules\RYD_HAC\topics.bikb",""] call RE;
 		waituntil {[nil,_UL,"loc",rKBHASTOPIC,"orders"] call RE};
 		sleep 0.5;
 	};

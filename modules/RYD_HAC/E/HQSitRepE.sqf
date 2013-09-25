@@ -3,7 +3,7 @@ RydHQE = GrpNull;
 
 RydHQE = group leaderHQE;
 
-leaderHQE kbAddTopic ["orders","RYD_HAC\topics.bikb",""];
+leaderHQE kbAddTopic ["orders","modules\RYD_HAC\topics.bikb",""];
 waituntil {(leaderHQE kbHasTopic "orders")};
 
 RydHQE_Cyclecount = 0;
@@ -19,11 +19,11 @@ RydHQE_LHQInit = false;
 waituntil {RydHQE_LHQInit};
 
 if (isNil ("RydHQE_Boxed")) then {RydHQE_Boxed = []};
-if (isNil ("RydHQE_AmmoBoxes")) then 
+if (isNil ("RydHQE_AmmoBoxes")) then
 	{
 	RydHQE_AmmoBoxes = [];
 
-	if not (isNil "RydHQE_AmmoDepot") then 
+	if not (isNil "RydHQE_AmmoDepot") then
 		{
 		_rds = (triggerArea RydHQE_AmmoDepot) select 0;
 		RydHQE_AmmoBoxes = (getPosATL RydHQE_AmmoDepot) nearObjects ["ReammoBox",_rds]
@@ -108,7 +108,7 @@ RydHQE_Exhausted = [];
 _lastHQ = leaderHQE;
 _OLmpl = 0;
 _cycleCap = 0;
-_firstMC = 0; 
+_firstMC = 0;
 _wp = [];
 
 while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
@@ -339,9 +339,9 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 			_front = true;
 			if not (isNil "FrontE") then {_front = ((getPosATL (vehicle (leader _x))) in FrontE)};
 			if ((RydHQE_Front) and ((side _x) getFriend (side RydHQE) < 0.6) and (_front) and not (_isCiv)) then {if not (_x in RydHQE_Enemies) then {RydHQE_Enemies set [(count RydHQE_Enemies), _x]}};
-			if (RydHQE_SubAll) then 
+			if (RydHQE_SubAll) then
 				{
-				if not ((side _x) getFriend (side RydHQE) < 0.6) then 
+				if not ((side _x) getFriend (side RydHQE) < 0.6) then
 					{
 					if (not (_x in RydHQE_Friends) and not (((leader _x) in RydHQE_Excluded) or (_isCiv))) then {RydHQE_Friends set [(count RydHQE_Friends), _x]}
 					};
@@ -353,11 +353,11 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 	RydHQE_Excl = [];
 
 		{
-		if not ((group _x) in RydHQE_Excl) then {RydHQE_Excl set [(count RydHQE_Excl),group _x]} 
+		if not ((group _x) in RydHQE_Excl) then {RydHQE_Excl set [(count RydHQE_Excl),group _x]}
 		}
 	foreach RydHQE_Excluded;
 
-	if (RydHQE_SubSynchro) then 
+	if (RydHQE_SubSynchro) then
 		{
 			{
 			if ((_x in RydHQE_LastSub) and not ((leader _x) in (synchronizedObjects leaderHQE)) and (RydHQE_ReSynchro)) then {RydHQE_Subordinated set [(count RydHQE_Subordinated),_x]};
@@ -366,7 +366,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 		foreach allGroups;
 		};
 
-	if (RydHQE_SubNamed) then 
+	if (RydHQE_SubNamed) then
 		{
 			{
 			for [{_i = 1},{_i <= RydHQE_NameLimit},{_i = _i + 1}] do
@@ -377,7 +377,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 		foreach allGroups;
 		};
 
-	if (RydHQE_SubZero) then 
+	if (RydHQE_SubZero) then
 		{
 			{
 			if (((random 100) >= 50) and not (_x in RydHQE_Subordinated)) then {RydHQE_Subordinated set [(count RydHQE_Subordinated),_x]} else {if (not (_x in RydHQEB_Subordinated)) then {RydHQEB_Subordinated set [(count RydHQEB_Subordinated),_x]}};
@@ -396,7 +396,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 		}
 	foreach ((RydHQE_Excl + RydHQE_ExcludedG) - RydHQE_NoWayD);
 
-	if (RydHQE_Init) then 
+	if (RydHQE_Init) then
 		{
 			{
 			RydHQE_CInitial = RydHQE_CInitial + (count (units _x))
@@ -413,7 +413,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 
 	RydHQE_Ex = [];
 
-	if (RydHQE_ExInfo) then 
+	if (RydHQE_ExInfo) then
 		{
 		RydHQE_Ex = RydHQE_Excl + RydHQE_ExcludedG
 		};
@@ -423,14 +423,14 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 			{
 			_enemyU = vehicle ((units _x) select _a);
 				{
-				if ((_x knowsAbout _enemyU) >= 0.05) exitwith 
+				if ((_x knowsAbout _enemyU) >= 0.05) exitwith
 					{
-					if not (_enemyU in RydHQE_KnEnemies) then 
+					if not (_enemyU in RydHQE_KnEnemies) then
 						{
 						RydHQE_KnEnemies set [(count RydHQE_KnEnemies),_enemyU];
 						};
 
-					if not ((group _enemyU) in RydHQE_KnEnemiesG) then 
+					if not ((group _enemyU) in RydHQE_KnEnemiesG) then
 						{
 						_already = missionnameSpace getVariable ["AlreadySpotted",[]];
 						RydHQE_KnEnemiesG set [(count RydHQE_KnEnemiesG),(group _enemyU)];
@@ -439,7 +439,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 							_UL = (leader _x);if not (isPlayer _UL) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_EnemySpot,"EnemySpot"] call RYD_AIChatter}};
 							}
 						}
-					} 
+					}
 				}
 			foreach (RydHQE_Friends + [RydHQE] + RydHQE_Ex)
 			}
@@ -461,7 +461,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 	_lossFinal = RydHQE_CInitial - RydHQE_CCurrent;
 	if (_lossFinal < 0) then {_lossFinal = 0;RydHQE_CInitial = RydHQE_CCurrent};
 
-	if not (RydHQE_Init) then 
+	if not (RydHQE_Init) then
 		{
 		_lossP = _lossFinal/RydHQE_CInitial;
 
@@ -484,7 +484,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 				}
 			};
 
-		
+
 		_lossPerc = _lossP * 100;
 		_cycle = RydHQE_Cyclecount - _firstMC;
 
@@ -505,7 +505,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 
 	if (RydHQE_Morale < -50) then {RydHQE_Morale = -50};
 	if (RydHQE_Morale > 0) then {RydHQE_Morale = 0};
-	if (RydHQE_Debug) then 
+	if (RydHQE_Debug) then
 		{
 		_mdbg = format ["Morale E (%2): %1 - losses: %3 percent (%4)",RydHQE_Morale,RydHQE_Personality,(round (((_lossFinal/RydHQE_CInitial) * 100) * 10)/10),_lossFinal];
 		diag_log _mdbg;
@@ -612,8 +612,8 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 				if (_LArmorATcheck) then {if not (_vh in RydHQE_LArmorAT) then {RydHQE_LArmorAT set [(count RydHQE_LArmorAT),_vh]};if not (_grp in RydHQE_LArmorATG) then {RydHQE_LArmorATG set [(count RydHQE_LArmorATG),_grp]}};
 				if (_Carscheck) then {if not (_vh in RydHQE_Cars) then {RydHQE_FValue = RydHQE_FValue + 3;RydHQE_Cars set [(count RydHQE_Cars),_vh]};if not (_grp in RydHQE_CarsG) then {RydHQE_CarsG set [(count RydHQE_CarsG),_grp]}};
 				if (_Aircheck) then {if not (_vh in RydHQE_Air) then {RydHQE_FValue = RydHQE_FValue + 15;RydHQE_Air set [(count RydHQE_Air),_vh]};if not (_grp in RydHQE_AirG) then {RydHQE_AirG set [(count RydHQE_AirG),_grp]}};
-				if (_BAircheck) then {if not (_vh in RydHQE_BAir) then {RydHQE_BAir set [(count RydHQE_BAir),_vh]};if not (_grp in RydHQE_BAirG) then {RydHQE_BAirG set [(count RydHQE_BAirG),_grp]}};				
-				if (_RAircheck) then {if not (_vh in RydHQE_RAir) then {RydHQE_RAir set [(count RydHQE_RAir),_vh]};if not (_grp in RydHQE_RAirG) then {RydHQE_RAirG set [(count RydHQE_RAirG),_grp]}};				
+				if (_BAircheck) then {if not (_vh in RydHQE_BAir) then {RydHQE_BAir set [(count RydHQE_BAir),_vh]};if not (_grp in RydHQE_BAirG) then {RydHQE_BAirG set [(count RydHQE_BAirG),_grp]}};
+				if (_RAircheck) then {if not (_vh in RydHQE_RAir) then {RydHQE_RAir set [(count RydHQE_RAir),_vh]};if not (_grp in RydHQE_RAirG) then {RydHQE_RAirG set [(count RydHQE_RAirG),_grp]}};
 				if (_NCAircheck) then {if not (_vh in RydHQE_NCAir) then {RydHQE_NCAir set [(count RydHQE_NCAir),_vh]};if not (_grp in RydHQE_NCAirG) then {RydHQE_NCAirG set [(count RydHQE_NCAirG),_grp]}};
 				if (_Navalcheck) then {if not (_vh in RydHQE_Naval) then {RydHQE_Naval set [(count RydHQE_Naval),_vh]};if not (_grp in RydHQE_NavalG) then {RydHQE_NavalG set [(count RydHQE_NavalG),_grp]}};
 				if (_Staticcheck) then {if not (_vh in RydHQE_Static) then {RydHQE_FValue = RydHQE_FValue + 1;RydHQE_Static set [(count RydHQE_Static),_vh]};if not (_grp in RydHQE_StaticG) then {RydHQE_StaticG set [(count RydHQE_StaticG),_grp]}};
@@ -624,7 +624,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 				if (_NCCargocheck) then {if not (_vh in RydHQE_NCCargo) then {RydHQE_NCCargo set [(count RydHQE_NCCargo),_vh]};if not (_grp in RydHQE_NCCargoG) then {RydHQE_NCCargoG set [(count RydHQE_NCCargoG),_grp]}};
 				if (_Crewcheck) then {if not (_vh in RydHQE_Crew) then {RydHQE_Crew set [(count RydHQE_Crew),_vh]};if not (_grp in RydHQE_CrewG) then {RydHQE_CrewG set [(count RydHQE_CrewG),_grp]}};
 				if (_NCrewInfcheck) then {if not (_vh in RydHQE_NCrewInf) then {RydHQE_NCrewInf set [(count RydHQE_NCrewInf),_vh]};if not (_grp in RydHQE_NCrewInfG) then {RydHQE_NCrewInfG set [(count RydHQE_NCrewInfG),_grp]}};
-				
+
 			}
 		foreach (units _x)
 		}
@@ -648,7 +648,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 			}
 		}
 	foreach RydHQE_AmmoDrop;
-		
+
 		{
 			{
 			_SpecForcheck = false;
@@ -720,7 +720,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 				if (((_grp == _grpD) and (_TasV in _Support)) or (_tp in _Support)) then {_Supportcheck = true;_NCrewInfcheck = false;_Othercheck = false};
 
 				if ((_TasV in _NCCargo) and (_x == (assignedDriver _asV)) and ((count (units (group _x))) == 1) and not ((_ATinfcheck) or (_AAinfcheck) or (_reconcheck) or (_FOcheck) or (_sniperscheck))) then {_NCrewInfcheck = false;_Othercheck = false};
-				
+
 				if (_SpecForcheck) then {if not (_vh in RydHQE_EnSpecFor) then {RydHQE_EnSpecFor set [(count RydHQE_EnSpecFor),_vh]};if not (_grp in RydHQE_EnSpecForG) then {RydHQE_EnSpecForG set [(count RydHQE_EnSpecForG),_grp]}};
 				if (_reconcheck) then {if not (_vh in RydHQE_Enrecon) then {RydHQE_Enrecon set [(count RydHQE_Enrecon),_vh]};if not (_grp in RydHQE_EnreconG) then {RydHQE_EnreconG set [(count RydHQE_EnreconG),_grp]}};
 				if (_FOcheck) then {if not (_vh in RydHQE_EnFO) then {RydHQE_EnFO set [(count RydHQE_EnFO),_vh]};if not (_grp in RydHQE_EnFOG) then {RydHQE_EnFOG set [(count RydHQE_EnFOG),_grp]}};
@@ -735,7 +735,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 				if (_LArmorATcheck) then {if not (_vh in RydHQE_EnLArmorAT) then {RydHQE_EnLArmorAT set [(count RydHQE_EnLArmorAT),_vh]};if not (_grp in RydHQE_EnLArmorATG) then {RydHQE_EnLArmorATG set [(count RydHQE_EnLArmorATG),_grp]}};
 				if (_Carscheck) then {if not (_vh in RydHQE_EnCars) then {RydHQE_EValue = RydHQE_EValue + 3;RydHQE_EnCars set [(count RydHQE_EnCars),_vh]};if not (_grp in RydHQE_EnCarsG) then {RydHQE_EnCarsG set [(count RydHQE_EnCarsG),_grp]}};
 				if (_Aircheck) then {if not (_vh in RydHQE_EnAir) then {RydHQE_EValue = RydHQE_EValue + 15;RydHQE_EnAir set [(count RydHQE_EnAir),_vh]};if not (_grp in RydHQE_EnAirG) then {RydHQE_EnAirG set [(count RydHQE_EnAirG),_grp]}};
-				if (_BAircheck) then {if not (_vh in RydHQE_EnBAir) then {RydHQE_EnBAir set [(count RydHQE_EnBAir),_vh]};if not (_grp in RydHQE_EnBAirG) then {RydHQE_EnBAirG set [(count RydHQE_EnBAirG),_grp]}};				
+				if (_BAircheck) then {if not (_vh in RydHQE_EnBAir) then {RydHQE_EnBAir set [(count RydHQE_EnBAir),_vh]};if not (_grp in RydHQE_EnBAirG) then {RydHQE_EnBAirG set [(count RydHQE_EnBAirG),_grp]}};
 				if (_RAircheck) then {if not (_vh in RydHQE_EnRAir) then {RydHQE_EnRAir set [(count RydHQE_EnRAir),_vh]};if not (_grp in RydHQE_EnRAirG) then {RydHQE_EnRAirG set [(count RydHQE_EnRAirG),_grp]}};
 				if (_NCAircheck) then {if not (_vh in RydHQE_EnNCAir) then {RydHQE_EnNCAir set [(count RydHQE_EnNCAir),_vh]};if not (_grp in RydHQE_EnNCAirG) then {RydHQE_EnNCAirG set [(count RydHQE_EnNCAirG),_grp]}};
 				if (_Navalcheck) then {if not (_vh in RydHQE_EnNaval) then {RydHQE_EnNaval set [(count RydHQE_EnNaval),_vh]};if not (_grp in RydHQE_EnNavalG) then {RydHQE_EnNavalG set [(count RydHQE_EnNavalG),_grp]}};
@@ -747,7 +747,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 				if (_NCCargocheck) then {if not (_vh in RydHQE_EnNCCargo) then {RydHQE_EnNCCargo set [(count RydHQE_EnNCCargo),_vh]};if not (_grp in RydHQE_EnNCCargoG) then {RydHQE_EnNCCargoG set [(count RydHQE_EnNCCargoG),_grp]}};
 				if (_Crewcheck) then {if not (_vh in RydHQE_EnCrew) then {RydHQE_EnCrew set [(count RydHQE_EnCrew),_vh]};if not (_grp in RydHQE_EnCrewG) then {RydHQE_EnCrewG set [(count RydHQE_EnCrewG),_grp]}};
 				if (_NCrewInfcheck) then {if not (_vh in RydHQE_EnNCrewInf) then {RydHQE_EnNCrewInf set [(count RydHQE_EnNCrewInf),_vh]};if not (_grp in RydHQE_EnNCrewInfG) then {RydHQE_EnNCrewInfG set [(count RydHQE_EnNCrewInfG),_grp]}};
-				
+
 			}
 		foreach (units _x)
 		}
@@ -790,7 +790,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 			if (_cowF > 0.5) then
 				{
 				_UL = leader _x;
-				if not (isPlayer _UL) then 
+				if not (isPlayer _UL) then
 					{
 					_inDanger = _x getVariable ["NearE",0];
 					if (_inDanger > 0.05) then
@@ -800,7 +800,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 					}
 				};
 
-			if (((random ((20 + (RydHQE_Morale/5))/_AllPanic)) < _cowF) and ((random 100) > (100/(_AllPanic + 1)))) then 
+			if (((random ((20 + (RydHQE_Morale/5))/_AllPanic)) < _cowF) and ((random 100) > (100/(_AllPanic + 1)))) then
 				{
 				[_x] call RYD_WPdel;
 				_x setVariable [("inPanic" + (str _x)), true];
@@ -808,7 +808,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 				_x setVariable [("Busy" + (str _x)), true];
 
 				_UL = leader _x;
-				if not (isPlayer _UL) then 
+				if not (isPlayer _UL) then
 					{
 					if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_InPanic,"InPanic"] call RYD_AIChatter}
 					};
@@ -845,7 +845,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 										for [{_a = 0},{_a < (count (weapons _unit))},{_a = _a + 1}] do
 											{
 											_weapon = (weapons _unit) select _a;
-											_unit Action ["dropWeapon", _unit, _weapon] 
+											_unit Action ["dropWeapon", _unit, _weapon]
 											};
 
 										_unit PlayAction "Surrender"
@@ -861,16 +861,16 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 			_panic = _x getVariable ("inPanic" + (str _x));
 			if (isNil ("_panic")) then {_panic = false};
 
-			if not (_panic) then 
+			if not (_panic) then
 				{
 				_x allowFleeing _cowF;
 				_x setVariable [("Cow" + (str _x)),_cowF,true];
-				} 
-			else 
+				}
+			else
 				{
-				_x allowFleeing 1; 
+				_x allowFleeing 1;
 				_x setVariable [("Cow" + (str _x)),1,true];
-				if ((random 1.1) > _cowF) then 
+				if ((random 1.1) > _cowF) then
 					{
 					_isCaptive = _x getVariable ("isCaptive" + (str _x));
 					if (isNil "_isCaptive") then {_isCaptive = false};
@@ -907,16 +907,16 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 			[RydHQE_ArtG,RydHQE_ArtyShells] call RYD_ArtyPrep;
 			};
 
-		if ((RydBB_Active) and (leaderHQE in (RydBBa_HQs + RydBBb_HQs))) then 
+		if ((RydBB_Active) and (leaderHQE in (RydBBa_HQs + RydBBb_HQs))) then
 			{
 			RydHQE_readyForBB = true;
 			RydxHQ_Done = true;
-			if (leaderHQE in RydBBa_HQs) then 
+			if (leaderHQE in RydBBa_HQs) then
 				{
 				waitUntil {sleep 0.1;(RydBBa_InitDone)}
 				};
 
-			if (leaderHQE in RydBBb_HQs) then 
+			if (leaderHQE in RydBBb_HQs) then
 				{
 				waitUntil {sleep 0.1;(RydBBb_InitDone)}
 				}
@@ -927,7 +927,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 
 	if (isNil ("RydHQE_Order")) then {RydHQE_Order = "ATTACK"};
 	_gauss100 = (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10);
-	if ((((_gauss100 + RydHQE_Inertia + RydHQE_Morale) > ((RydHQE_EValue/(RydHQE_FValue + 0.1)) * 60)) and not (isNil ("RydHQE_Obj")) and not (RydHQE_Order == "DEFEND")) or (RydHQE_Berserk)) then 
+	if ((((_gauss100 + RydHQE_Inertia + RydHQE_Morale) > ((RydHQE_EValue/(RydHQE_FValue + 0.1)) * 60)) and not (isNil ("RydHQE_Obj")) and not (RydHQE_Order == "DEFEND")) or (RydHQE_Berserk)) then
 		{
 		_lastS = RydHQE getVariable ["LastStance","At"];
 		if ((_lastS == "De") or (RydHQE_CycleCount == 1)) then
@@ -937,9 +937,9 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 
 		RydHQE setVariable ["LastStance","At"];
 		RydHQE_Inertia = 30 * (0.5 + RydHQE_Consistency)*(0.5 + RydHQE_Activity);
-		[] spawn E_HQOrders 
-		} 
-	else 
+		[] spawn E_HQOrders
+		}
+	else
 		{
 		_lastS = RydHQE getVariable ["LastStance","De"];
 		if ((_lastS == "At") or (RydHQE_CycleCount == 1)) then
@@ -949,7 +949,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 
 		RydHQE setVariable ["LastStance","De"];
 		RydHQE_Inertia = - (30  * (0.5 + RydHQE_Consistency))/(0.5 + RydHQE_Activity);
-		[] spawn E_HQOrdersDef 
+		[] spawn E_HQOrdersDef
 		};
 
 
@@ -995,7 +995,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 				_trgG = _SFTgts select (floor (random (count _SFTgts)));
 				_alreadyAttacked = {_x == _trgG} count RydHQE_SFTargets;
 				_chance = _chance/(1 + _alreadyAttacked);
-				if (_chance  < _SFcount) then 
+				if (_chance  < _SFcount) then
 					{
 					_chance = _SFcount
 					}
@@ -1007,7 +1007,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 						}
 					};
 
-				if ((random 100) < _chance) then 
+				if ((random 100) < _chance) then
 					{
 					_SFAv = [];
 
@@ -1021,7 +1021,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 							if not (_isResting) then
 								{
 								if not (_x in RydHQE_SFBodyGuard) then
-									{	
+									{
 									_SFAv set [(count _SFAv),_x]
 									}
 								}
@@ -1042,7 +1042,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 		if ((abs (speed (vehicle leaderHQE))) < 0.1) then {RydHQE setVariable ["onMove",false]};
 		_onMove = RydHQE getVariable ["onMove",false];
 
-		if not (_onMove) then 
+		if not (_onMove) then
 			{
 			if (not (isPlayer leaderHQE) and ((RydHQE_Cyclecount == 1) or not (RydHQE_Progress == 0))) then
 				{
@@ -1053,7 +1053,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 
 				_rds = 0;
 
-				if (RydHQE_LRelocating) then 
+				if (RydHQE_LRelocating) then
 					{
 					_rds = 0;
 					if (RydHQE_NObj == 1) then {_Lpos = RydHQE_Fpos;if (leaderHQE in (RydBBa_HQs + RydBBb_HQs)) then {_Lpos = position leaderHQE};_rds = 0};
@@ -1075,7 +1075,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 					}
 				foreach RydHQE_KnEnemiesG;
 
-				if not (_enemyN) then 
+				if not (_enemyN) then
 					{
 					_wp = [RydHQE,_Lpos,"HOLD","AWARE","GREEN",_spd,["true",""],true,_rds,[0,0,0],"FILE"] call RYD_WPadd;
 					if (isNull (assignedVehicle leaderHQE)) then
@@ -1083,17 +1083,17 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 						if (RydHQE_GetHQInside) then {[_wp] call RYD_GoInside}
 						};
 
-					if ((RydHQE_LRelocating) and (RydHQE_NObj > 1) and (RydHQE_Cyclecount > 1)) then 
+					if ((RydHQE_LRelocating) and (RydHQE_NObj > 1) and (RydHQE_Cyclecount > 1)) then
 						{
 						[_Lpos] spawn
 							{
 							_Lpos = _this select 0;
-						
+
 							_eDst = 1000;
 							_onPlace = false;
 							_getBack = false;
 
-							waitUntil 
+							waitUntil
 								{
 								sleep 10;
 
@@ -1105,7 +1105,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 									}
 								foreach RydHQE_KnEnemiesG;
 
-								if (isNull RydHQE) then 
+								if (isNull RydHQE) then
 									{
 									_onPlace = true
 									}
@@ -1116,7 +1116,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 										if (((vehicle leaderHQE) distance _LPos) < 30) then {_onPlace = true}
 										}
 									};
-								
+
 
 								((_getback) or (_onPlace))
 								};
@@ -1140,7 +1140,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 
 								if (_getBack) then {_Lpos = getPosATL (vehicle leaderHQE);_rds = 0};
 
-								[RydHQE] call RYD_WPdel;	
+								[RydHQE] call RYD_WPdel;
 
 								_spd = "NORMAL";
 								if not (((vehicle leaderHQE) distance _LPos) < 50) then {_spd = "FULL"};
@@ -1174,7 +1174,7 @@ while {not ((isNull RydHQE) or (RydHQE_Surrender))} do
 		_KnEnemy = RydHQE_KnEnemies select _z;
 
 			{
-			if ((_x knowsAbout _KnEnemy) > 0.01) then {RydHQE reveal [_KnEnemy,2]} 
+			if ((_x knowsAbout _KnEnemy) > 0.01) then {RydHQE reveal [_KnEnemy,2]}
 			}
 		foreach RydHQE_Friends
 		}
