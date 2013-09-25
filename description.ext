@@ -4,10 +4,10 @@
  * Licence: https://creativecommons.org/licenses/by-sa/3.0/
  * Last Updated: 2013/08/29
  */
-author = "VigilVindex"; // http://community.bistudio.com/wiki/Description.ext#author
-onLoadName = "RYD_HAC"; // http://community.bistudio.com/wiki/Description.ext#onLoadName
+author = "Rydygier, Zorrobyte, VigilVindex"; // http://community.bistudio.com/wiki/Description.ext#author
+onLoadName = "HAC Module Demo"; // http://community.bistudio.com/wiki/Description.ext#onLoadName
 onLoadMission = "Hetman Artificial Commander."; // http://community.bistudio.com/wiki/Description.ext#onLoadMission
-//loadScreen = "logo.jpg"; // http://community.bistudio.com/wiki/Description.ext#loadScreen
+loadScreen = "logo.jpg"; // http://community.bistudio.com/wiki/Description.ext#loadScreen
 
 class Header { // http://community.bistudio.com/wiki/Description.ext#header
   gameType = COOP;

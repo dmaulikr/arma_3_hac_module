@@ -10,26 +10,7 @@ class Params { // http://community.bistudio.com/wiki/Description.ext#params_2
   #include <params.h>
 };
 
-#ifdef mod_btc_revive
-  #include <modules\BTC_revive\BTC_respawn.h>
-#endif
-
-#ifdef mod_taw_vd
-  #include <modules\taw_vd\dialog.hpp>
-#endif
-#ifdef mod_vas
-  #include <modules\VAS\common.hpp>
-  #include <modules\VAS\menu.hpp>
-#endif
-
-#ifdef mod_btc_logistic
-  #include "modules\BTC_Logistic\config.h"
-#endif
-
 class RscTitles { // http://community.bistudio.com/wiki/Description.ext#rscTitles
-#ifdef mod_btc_logistic
-  #include "modules\BTC_Logistic\BTC_Lift\BTC_Hud.h"
-#endif
 };
 
 class CfgSounds { // http://community.bistudio.com/wiki/Description.ext#cfgSounds
@@ -44,10 +25,4 @@ class CfgRadio { // http://community.bistudio.com/wiki/Description.ext#cfgRadio
 };
 
 class CfgFunctions {
-#ifdef mod_taw_vd
-	#include "modules\taw_vd\cfgfunctions.hpp"
-#endif
-#ifdef mod_vas
-	#include "modules\VAS\cfgfunctions.hpp"
-#endif
 };

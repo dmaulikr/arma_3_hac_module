@@ -11,17 +11,8 @@
 #ifdef mod_core_time
   #include <modules\core_time\params.h>
 #endif
-#ifdef mod_btc_revive
-  #include <modules\BTC_revive\params.h>
-#endif
-#ifdef mod_btc_logistic
-  #include <modules\BTC_logistic\params.h>
-#endif
-#ifdef mod_vv_mod
-  #include <modules\vv_mod\params.h>
-#endif
-#ifdef mod_tpw_houselights
-  #include <modules\tpw_houselights\params.h>
+#ifdef mod_ryd_hac
+  #include <modules\RYD_HAC\params.h>
 #endif
 class Spacer0 {
     title = " ";

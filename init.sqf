@@ -17,7 +17,7 @@ MISSION_ROOT = call {
 };
 diag_log format ["#%1# MISSION_ROOT = %2.",time,MISSION_ROOT];
 enableSaving[false,false];
-//execNow "briefing.sqf";
+execNow "briefing.sqf";
 execNow "scripts\get_params.sqf";
 #ifdef mod_date_time
   if ((date_time_switch) == 1) then {
@@ -31,39 +31,14 @@ execNow "scripts\get_params.sqf";
     execNow "modules\core_time\init.sqf";
   };
 #endif
-#ifdef mod_btc_revive
-  if ((btc_revive_switch) == 1) then {
-    diag_log format ["#%1# Initialising BTC Revive...",time];
-    execNow "modules\BTC_revive\init.sqf";
-  };
-#endif
-#ifdef mod_btc_logistic
-  if ((btc_logistic_switch) == 1) then {
-    diag_log format ["#%1# Initialising BTC Logistic...",time];
-    execNow "modules\BTC_logistic\init.sqf";
-  };
-#endif
-#ifdef mod_tpw_houselights
-  if ((tpw_houselights_switch) == 1) then {
-    diag_log format ["#%1# Initialising TPW Houselights...",time];
-    execNow "modules\tpw_houselights\init.sqf";
-  };
-#endif
 if(isServer) then { // Server Scope
   diag_log format ["#%1# Initialising server.",time];
-#ifdef mod_vv_mod
-  if ((vv_mod_switch) == 1) then {
-    diag_log format ["#%1# Initialising VV Module...",time];
-    execNow "modules\vv_mod\init.sqf";
-  };
-#endif
 #ifdef mod_ryd_hac
   if ((ryd_hac_switch) == 1) then {
     diag_log format ["#%1# Initialising RYD HAC...",time];
     execNow "modules\ryd_hac\init.sqf";
   };
 #endif
-  //execNow "init-server.sqf";
 };
 if(!(hasInterface) && !(isServer)) then { // Headless Client Scope
   diag_log format ["# %1 # Initialising headless client.",time];
@@ -74,8 +49,5 @@ if(isNull player) then { // JIP Client Scope
 };
 if(!isDedicated) then { // Client Scope
   diag_log format ["# %1 # Initialising client.",time];
-  //execNow "scripts\jump.sqf";
-  //fun = [] execVM "scripts\restrict_view.sqf";
-  //execNow "init-client.sqf";
 };
 diag_log format ["# %1 # Mission initialisation complete.",time];
