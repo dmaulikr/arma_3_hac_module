@@ -53,7 +53,8 @@ if (isNil("RYD_AIChatter")) then {
 		if not (isMultiplayer) then	{
 			_unit sideRadio _sentence;
 		}else{
-			[_unit,nil, "per", rSIDERADIO,_sentence] call RE;
+			// [_unit,nil, "per", rSIDERADIO,_sentence] call RE;
+			//call compile format["[{player sideRadio %1;},'BIS_fnc_Spawn',true,true] spawn BIS_fnc_MP;",_sentence];
 		};
 		missionNameSpace setVariable ["HAC_AIChatLT" + _varName,[time,_kind]];
 	};

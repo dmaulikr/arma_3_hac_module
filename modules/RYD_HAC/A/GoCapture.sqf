@@ -431,8 +431,8 @@ if (isPlayer (leader _unitG)) then
 		}
 	else
 		{
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,(position _Trg)] call RE;
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Secure Area.", "S&D", ""]] call RE
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,(position _Trg)] call RE;
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Secure Area.", "S&D", ""]] call RE
 		}
 	};
 

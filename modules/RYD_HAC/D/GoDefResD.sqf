@@ -97,7 +97,7 @@ if (isPlayer _UL) then {[_UL,leaderHQD] spawn VoiceComm;sleep 3;waituntil {sleep
 
 if ((RydHQD_Debug) or (isPlayer (leader _unitG))) then
 	{
-	_i = [_DefPos,_unitG,"markDef","ColorRedAlpha","ICON","mil_dot","DRes D"," - DEFEND POSITION"] call RYD_Mark
+	_i = [_DefPos,_unitG,"markDef","ColorRed","ICON","mil_dot","DRes D"," - DEFEND POSITION"] call RYD_Mark
 	};
 
 _AV = assignedVehicle _UL;
@@ -319,7 +319,7 @@ waituntil
 
 		if ((RydHQD_Debug) or (isPlayer (leader _unitG))) then
 			{
-			_i = [_RnfP,_unitG,"markReinf","ColorRedAlpha","ICON","mil_dot","Reinf D"," - REINFORCE POSITION",[0.3,0.3]] call RYD_Mark
+			_i = [_RnfP,_unitG,"markReinf","ColorRed","ICON","mil_dot","Reinf D"," - REINFORCE POSITION",[0.3,0.3]] call RYD_Mark
 			}
 		};
 

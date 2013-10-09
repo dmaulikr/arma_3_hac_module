@@ -337,8 +337,8 @@ if (isPlayer (leader _unitG)) then
 		}
 	else
 		{
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,(position _Trg)] call RE;
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Search and destroy enemy.", "S&D", ""]] call RE
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,(position _Trg)] call RE;
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Search and destroy enemy.", "S&D", ""]] call RE
 		}
 	};
 
@@ -379,8 +379,8 @@ if (_unitG in RydHQ_Garrison) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Spos] call RE;
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Spos] call RE;
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
 			}
 		};
 

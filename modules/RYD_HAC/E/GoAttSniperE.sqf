@@ -3,7 +3,7 @@ _i = "";
 _unitG = _this select 0;
 
 _Spos = _unitG getvariable ("START" + (str _unitG));
-if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))};
+if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))}; 
 
 _Trg = _this select 1;
 
@@ -64,7 +64,7 @@ while {((_isWater) and (([_posX,_posY] distance _PosObj1) >= 50))} do
 
 _isWater = surfaceIsWater [_posX,_posY];
 
-if (_isWater) exitwith
+if (_isWater) exitwith 
 	{
 	RydHQE_AttackAv = RydHQE_AttackAv + [(_unitG)];
 	_unitG setVariable [("Busy" + (str _unitG)),false];
@@ -81,31 +81,31 @@ if (_cnt > 0) then
 
 	switch (true) do
 		{
-		case ((_rnd < 25) or (_cnt == 1)) :
+		case ((_rnd < 25) or (_cnt == 1)) : 
 			{
 			_posX = (_positions select 0) select 0;
 			_posY = (_positions select 0) select 1
 			};
 
-		case (((_rnd >= 25) and (_rnd < 45)) or (_cnt == 2)) :
+		case (((_rnd >= 25) and (_rnd < 45)) or (_cnt == 2)) : 
 			{
 			_posX = (_positions select 1) select 0;
 			_posY = (_positions select 1) select 1
 			};
 
-		case (((_rnd >= 45) and (_rnd < 60)) or (_cnt == 3)) :
+		case (((_rnd >= 45) and (_rnd < 60)) or (_cnt == 3)) : 
 			{
 			_posX = (_positions select 2) select 0;
 			_posY = (_positions select 2) select 1
 			};
 
-		case (((_rnd >= 60) and (_rnd < 70)) or (_cnt == 4)) :
+		case (((_rnd >= 60) and (_rnd < 70)) or (_cnt == 4)) : 
 			{
 			_posX = (_positions select 3) select 0;
 			_posY = (_positions select 3) select 1
 			};
 
-		default
+		default 
 			{
 			_posR = _positions select (floor (random (count _positions)));
 			_posX = _posR select 0;
@@ -120,9 +120,9 @@ _UL = leader _unitG;
 RydHQE_VCDone = false;
 if (isPlayer _UL) then {[_UL,leaderHQE] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQE_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-if ((RydHQE_Debug) or (isPlayer (leader _unitG))) then
+if ((RydHQE_Debug) or (isPlayer (leader _unitG))) then 
 	{
-	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","mil_dot","Snp E"," - ATTACK"] call RYD_Mark
+	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","DOT","Snp E"," - ATTACK"] call RYD_Mark
 	};
 
 _AV = assignedVehicle _UL;
@@ -198,8 +198,8 @@ _wp = [_gp,_pos,_tp,_beh,"YELLOW",_spd,_sts,_crr,0.001,_TO] call RYD_WPadd;
 if ((RydxHQ_SynchroAttack) and not (_halfway)) then
 	{
 	[_wp,_Trg] call RYD_WPSync;
-
-
+	 
+	 
 	};
 
 _DAV = assigneddriver _AV;
@@ -209,7 +209,7 @@ _timer = _cause select 0;
 _alive = _cause select 1;
 
 if (_timer > 300) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle _UL), 0];[_unitG] call RYD_ResetAI};
-if not (_alive) exitwith
+if not (_alive) exitwith 
 	{
 	if ((RydHQE_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	[_Trg,"SnpAttacked"] call RYD_VarReductor
@@ -229,8 +229,8 @@ if (_halfway) then
 	if (RydxHQ_SynchroAttack) then
 		{
 		[_wp,_Trg] call RYD_WPSync;
-
-
+		 
+		 
 		};
 
 	_cause = [_unitG,6,true,0,300,[],false] call RYD_Wait;
@@ -259,7 +259,7 @@ if (isPlayer (leader _unitG)) then
 
 _frm = formation _unitG;
 if not (isPlayer (leader _unitG)) then {_frm = "WEDGE"};
-_unitG enableAttack false;
+_unitG enableAttack false; 
 _cur = true;
 if (RydxHQ_SynchroAttack) then {_cur = false};
 
@@ -274,7 +274,7 @@ _cause = [_unitG,5,true,0,240,[],false,true,true,false,false,false,true] call RY
 _timer = _cause select 0;
 _alive = _cause select 1;
 
-_unitG enableAttack true;
+_unitG enableAttack true; 
 _fEH = (leader _unitG) getVariable "HAC_FEH";
 (leader _unitG) setVariable ["FireCount",nil];
 
@@ -284,7 +284,7 @@ if not (isNil "_fEH") then
 	(leader _unitG) setVariable ["HAC_FEH",nil]
 	};
 
-if not (_alive) exitwith
+if not (_alive) exitwith 
 	{
 	if ((RydHQE_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	[_Trg,"SnpAttacked"] call RYD_VarReductor
@@ -347,7 +347,7 @@ if (_unitG in RydHQE_Garrison) then
 			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
 			}
 		};
-
+	
 	_wp = [_unitG,_Spos,"MOVE","SAFE","YELLOW","NORMAL",["true","deletewaypoint [(group this), 0];"],true,5] call RYD_WPadd;
 
 	_cause = [_unitG,6,true,0,30,[],false] call RYD_Wait;

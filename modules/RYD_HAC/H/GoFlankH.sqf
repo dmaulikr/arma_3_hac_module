@@ -3,7 +3,7 @@ _i2 = "";
 _i3 = "";
 _i4 = "";
 
-_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(getPosATL (vehicle (leader _unitG))),true]};
+_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(getPosATL (vehicle (leader _unitG))),true]}; 
 _BEnemyPos = _this select 1;
 _PosMidX = _this select 2;
 _PosMidY = _this select 3;
@@ -31,7 +31,7 @@ _dY = _BEposY - ((getPosATL leaderHQH) select 1);
 
 _angle = _dX atan2 _dY;
 
-if (_angle < 0) then {_angle = _angle + 360};
+if (_angle < 0) then {_angle = _angle + 360};  
 _h = 1;
 if ((_angle0 > 45) and (_angle0 <= 225)) then {_h = - 1};
 
@@ -114,7 +114,7 @@ _isWater = surfaceIsWater [_posXWP4,_posYWP4];
 
 if (_isWater) exitwith {_unitG setVariable [("Busy" + (str _unitG)),false];RydHQH_FlankAv = RydHQH_FlankAv - [_unitG]};
 
-if ((leaderHQH distance [_posXWP1,_posYWP1]) > (leaderHQH distance [_posXWP2,_posYWP2])) then
+if ((leaderHQH distance [_posXWP1,_posYWP1]) > (leaderHQH distance [_posXWP2,_posYWP2])) then 
 	{
 	_posXWP2 = _posXWP1 - _safeX2;
 	_posYWP2 = _posYWP1 - _safeY2;
@@ -156,20 +156,20 @@ if ((_ammo > 0) and not (_busy)) then
 	RydHQH_VCDone = false;
 	if (isPlayer _UL) then {[_UL,leaderHQH] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQH_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-
-	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
+	
+	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
 		{
-		_i1 = [[_posXWP1,_posYWP1],_unitG,"markFlank1","ColorOrange","ICON","mil_dot","Fl1 H"," - FLANK 1"] call RYD_Mark;
-		_i2 = [[_posXWP2,_posYWP2],_unitG,"markFlank2","ColorOrange","ICON","mil_dot","Fl2 H"," - FLANK 2"] call RYD_Mark;
-		_i3 = [[_posXWP3,_posYWP3],_unitG,"markFlank3","ColorOrange","ICON","mil_dot","Fl3 H"," - FLANK 3"] call RYD_Mark;
-		_i4 = [[_posXWP4,_posYWP4],_unitG,"markFlank4","ColorOrange","ICON","mil_dot","Fl4 H"," - FLANKING ATTACK"] call RYD_Mark
+		_i1 = [[_posXWP1,_posYWP1],_unitG,"markFlank1","ColorOrange","ICON","DOT","Fl1 H"," - FLANK 1"] call RYD_Mark;
+		_i2 = [[_posXWP2,_posYWP2],_unitG,"markFlank2","ColorOrange","ICON","DOT","Fl2 H"," - FLANK 2"] call RYD_Mark;
+		_i3 = [[_posXWP3,_posYWP3],_unitG,"markFlank3","ColorOrange","ICON","DOT","Fl3 H"," - FLANK 3"] call RYD_Mark;
+		_i4 = [[_posXWP4,_posYWP4],_unitG,"markFlank4","ColorOrange","ICON","DOT","Fl4 H"," - FLANKING ATTACK"] call RYD_Mark
 		};
 
 	_CargoCheck = _unitG getvariable ("CC" + _unitvar);
 	if (isNil ("_CargoCheck")) then {_unitG setVariable [("CC" + _unitvar), false]};
 	_AV = assignedVehicle _UL;
 	if ((RydHQH_CargoFind > 0) and (isNull _AV) and (([_posXWP4,_posYWP4] distance (vehicle _UL)) > 1000)) then {[_unitG] spawn H_SCargo } else {_unitG setVariable [("CC" + _unitvar), true]};
-	if (RydHQH_CargoFind > 0) then
+	if (RydHQH_CargoFind > 0) then 
 		{
 		waituntil {sleep 0.05;(_unitG getvariable ("CC" + _unitvar))};
 		_unitG setVariable [("CC" + _unitvar), false];
@@ -225,7 +225,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_GDV = group _DAV;
 	_enemy = false;
 
-	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then
+	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then 
 		{
 		_OtherGroup = true;
 
@@ -234,7 +234,7 @@ if ((_ammo > 0) and not (_busy)) then
 		_alive = _cause select 1;
 		_enemy = _cause select 2
 		}
-	else
+	else 
 		{
 		_cause = [_unitG,6,true,300,30,[RydHQH_AirG,RydHQH_KnEnemiesG],false] call RYD_Wait;
 		_timer = _cause select 0;
@@ -296,7 +296,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_GDV = group _DAV;
 	_enemy = false;
 
-	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then
+	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then 
 		{
 		_OtherGroup = true;
 
@@ -305,7 +305,7 @@ if ((_ammo > 0) and not (_busy)) then
 		_alive = _cause select 1;
 		_enemy = _cause select 2
 		}
-	else
+	else 
 		{
 		_cause = [_unitG,6,true,300,30,[RydHQH_AirG,RydHQH_KnEnemiesG],false] call RYD_Wait;
 		_timer = _cause select 0;
@@ -357,7 +357,7 @@ if ((_ammo > 0) and not (_busy)) then
 	if not (isNull _AV) then {_grp = _GDV};
 	_beh = "AWARE";
 	_lz = objNull;
-	if (not (isNull _AV) and (_GDV in RydHQH_AirG)) then
+	if (not (isNull _AV) and (_GDV in RydHQH_AirG)) then 
 		{
 		_beh = "CARELESS";
 		if (RydHQH_LZ) then
@@ -386,7 +386,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_GDV = group _DAV;
 	_enemy = false;
 
-	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then
+	if not (((group _DAV) == (group _UL)) or (isNull (group _DAV))) then 
 		{
 		_OtherGroup = true;
 
@@ -395,7 +395,7 @@ if ((_ammo > 0) and not (_busy)) then
 		_alive = _cause select 1;
 		_enemy = _cause select 2
 		}
-	else
+	else 
 		{
 		_cause = [_unitG,6,true,400,30,[RydHQH_AirG,RydHQH_KnEnemiesG],false] call RYD_Wait;
 		_timer = _cause select 0;
@@ -414,7 +414,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_AV = assignedVehicle _UL;
 	_pass = assignedCargo _AV;
 	_allowed = true;
-	if not ((_GDV == _unitG) or (isNull _GDV)) then
+	if not ((_GDV == _unitG) or (isNull _GDV)) then 
 		{
 		//{unassignVehicle _x} foreach (units _unitG);
 		_pass orderGetIn false;
@@ -430,7 +430,7 @@ if ((_ammo > 0) and not (_busy)) then
 	_GDV = group _DAV;
 
 	if (not (isNull _AV) and (RydHQH_CargoFind > 0) and (_unitG in RydHQH_NCrewInfG)) then
-		{
+		{	
 		_cause = [_unitG,1,false,0,240,[],true,true,false,false,false,false] call RYD_Wait;
 		_timer = _cause select 0
 		};
@@ -439,7 +439,7 @@ if ((_ammo > 0) and not (_busy)) then
 
 	if (RydHQH_LZ) then {deleteVehicle _lz};
 
-	if not ((_GDV == _unitG) or (isNull _GDV)) then
+	if not ((_GDV == _unitG) or (isNull _GDV)) then 
 		{
 		{unassignVehicle _x} foreach (units _unitG);
 		};
@@ -491,9 +491,9 @@ if ((_ammo > 0) and not (_busy)) then
 	_timer = _cause select 0;
 	_alive = _cause select 1;
 
-	if not (_alive) exitwith
+	if not (_alive) exitwith 
 		{
-		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
+		if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
 			{
 				{
 				deleteMarker _x
@@ -510,7 +510,7 @@ if ((_ammo > 0) and not (_busy)) then
 
 	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then {_i4 setMarkerColor "ColorBlue"};
 	sleep 30;
-	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then
+	if ((RydHQH_Debug) or (isPlayer (leader _unitG))) then 
 		{
 			{
 			deleteMarker _x
@@ -519,5 +519,5 @@ if ((_ammo > 0) and not (_busy)) then
 		};
 
 	_UL = leader _unitG;if not (isPlayer _UL) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdEnd,"OrdEnd"] call RYD_AIChatter}};
-	};
+	};	
 

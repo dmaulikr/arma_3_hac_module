@@ -18,7 +18,7 @@ foreach ((_LMCU + _airDef + _recDef) - ([RydHQG] + RydHQG_Garrison));
 if (_allInDef) exitWith {RydxHQ_Done = true};
 
 if ((RydHQG_DefDone) and (RydHQG_Order == "DEFEND") and not ((RydHQG_LastE == 0) and ((count RydHQG_KnEnemies) > 0) and (RydHQG_FirstEMark))) exitwith {RydxHQ_Done = true};
-if (RydHQG_Order == "DEFEND") then
+if (RydHQG_Order == "DEFEND") then 
 	{
 	RydHQG_DefDone = true
 	};
@@ -34,23 +34,23 @@ if (RydHQG_NObj == 2) then {RydHQG_Obj = RydHQG_Obj2};
 if (RydHQG_NObj == 3) then {RydHQG_Obj = RydHQG_Obj3};
 if (RydHQG_NObj >= 4) then {RydHQG_Obj = RydHQG_Obj4};
 
-if (isNil ("RydHQG_Obj")) then
+if (isNil ("RydHQG_Obj")) then 
 	{
-	if not (isNull leaderHQG) then
+	if not (isNull leaderHQG) then 
 		{
 		_default = position leaderHQG
 		}
-	else
+	else 
 		{
 		_default = position (leader (RydHQG_Friends select (random (floor (count RydHQG_Friends)))))
 		}
 	}
- else
+ else 
 	{
 	_default = position RydHQG_Obj
 	};
 
-if not ((count RydHQG_KnEnPos) == 0) then
+if not ((count RydHQG_KnEnPos) == 0) then 
 	{
 		{
 		_Epos0 = _Epos0 + [(_x select 0)];
@@ -60,12 +60,12 @@ if not ((count RydHQG_KnEnPos) == 0) then
 	}
 else
 	{
-	if not (isNull leaderHQG) then
+	if not (isNull leaderHQG) then 
 		{
 		_Epos0 = [(position leaderHQG) select 0];
 		_Epos1 = [(position leaderHQG) select 1]
 		}
-	else
+	else 
 		{
 		_Epos0 = [(position (leader (RydHQG_Friends select (random (floor (count RydHQG_Friends)))))) select 0];
 		_Epos1 = [(position (leader (RydHQG_Friends select (random (floor (count RydHQG_Friends)))))) select 1]
@@ -75,7 +75,7 @@ else
 _Epos0Max = _default select 0;
 _Epos0Min = _default select 0;
 
-for [{_a = 0},{_a < (count _Epos0)},{_a = _a + 1}] do
+for [{_a = 0},{_a < (count _Epos0)},{_a = _a + 1}] do 
 	{
 	_EposA = _Epos0 select _a;
 	if (_a == 0) then {_Epos0Min = _EposA};
@@ -89,7 +89,7 @@ _Epos1Min = _default select 1;
 _sel1Max = 1;
 _sel1Min = 1;
 
-for [{_b = 0},{_b < (count _Epos1)},{_b = _b + 1}] do
+for [{_b = 0},{_b < (count _Epos1)},{_b = _b + 1}] do 
 	{
 	_EposB = _Epos1 select _b;
 	if (_b == 0) then {_Epos1Min = _EposB};
@@ -110,7 +110,7 @@ foreach _LMCU;
 
 _defPoints = [leaderHQG];
 
-if (RydHQG_DefendObjectives > 0) then
+if (RydHQG_DefendObjectives > 0) then 
 	{
 	switch (RydHQG_NObj) do
 		{
@@ -138,7 +138,7 @@ while {(_ct < 3)} do
 		_closest = _defPoints select 0;
 		_friend = vehicle (leader _x);
 		_dstM = _friend distance _closest;
-
+			
 			{
 			_dstAct = _x distance _friend;
 			if (_dstAct < _dstM) then {_dstM = _dstAct;_closest = _x}
@@ -191,7 +191,7 @@ _DN = false;
 	RydHQG_Angle = 0;
 	RydHQG_Angle = _dX atan2 _dY;
 
-	if (RydHQG_Angle < 0) then {RydHQG_Angle = RydHQG_Angle + 360};
+	if (RydHQG_Angle < 0) then {RydHQG_Angle = RydHQG_Angle + 360}; 
 
 	_dXb = 400 * (sin RydHQG_Angle);
 	_dYb = 400 * (cos RydHQG_Angle);
@@ -225,7 +225,7 @@ _DN = false;
 	_lng = _Lenght2;
 	_wdt = _Width2;
 
-	if (((RydHQG_Angle >= 45) and (RydHQG_Angle < 135)) or ((RydHQG_Angle >= 225) and (RydHQG_Angle < 315))) then
+	if (((RydHQG_Angle >= 45) and (RydHQG_Angle < 135)) or ((RydHQG_Angle >= 225) and (RydHQG_Angle < 315))) then 
 		{
 		_Lenght1 = 100 + (5*_clr);
 		_Width1 = 50 * _clr;
@@ -233,7 +233,7 @@ _DN = false;
 		_Width2 = 50 * _cl;
 		};
 
-	if (((_Center distance [_PosMid0,_PosMid1]) < 500) or ((count RydHQG_KnEnPos) == 0)) then
+	if (((_Center distance [_PosMid0,_PosMid1]) < 500) or ((count RydHQG_KnEnPos) == 0)) then 
 		{
 		_Lenght1 = 50 * _clr;
 		_Width1 = 50 * _clr;
@@ -253,7 +253,7 @@ _DN = false;
 
 		if (((count RydHQG_KnEnPos) == 0) or not ((count _defFront) == 0)) then
 			{
-			if not ((count _defFront) == 0) then
+			if not ((count _defFront) == 0) then 
 				{
 				_PrimDir = _defFront select 0;
 				_SecDir = _defFront select 1
@@ -283,9 +283,9 @@ _DN = false;
 
 	if ((_Center distance [_PosMid0,_PosMid1]) < 500) then {_Center = position _defPoint};
 
-	if (RydHQG_Debug) then
+	if (RydHQG_Debug) then 
 		{
-		_goodmark = [_Center,_defPoint,"Center","ColorGreen","ICON","mil_dot","Def Center","Def Center"] call RYD_Mark
+		_goodmark = [_Center,_defPoint,"Center","ColorGreen","ICON","DOT","Def Center","Def Center"] call RYD_Mark
 		};
 
 	//_o = [_Center,(random 1000),"markDef","ColorKhaki","RECTANGLE","Border","","",[_lng,_wdt],RydHQG_Angle] call RYD_Mark;
@@ -328,7 +328,7 @@ foreach _defPoints;
 
 _Spot = [];
 _GS = [];
-
+		
 	{
 	_isDef = _x getVariable "Defending";
 	if (isNil "_isDef") then {_isDef = false};
@@ -338,7 +338,7 @@ _GS = [];
 		_closestArr = _defArray select 0;
 		_friend =  vehicle (leader _x);
 		_dstM = _friend distance (_closestArr select 0);
-
+			
 			{
 			_arrP = _x select 0;
 			_dstAct = _arrP distance _friend;
@@ -346,14 +346,14 @@ _GS = [];
 			}
 		foreach _defArray;
 
-		_goodSpots = _closestArr select 1;_angleV = _closestArr select 5;
+		_goodSpots = _closestArr select 1;_angleV = _closestArr select 5;	
 
 		if ((count _goodSpots) == 0) exitwith {};
-		if not (_x in RydHQG_RecDefSpot) then
+		if not (_x in RydHQG_RecDefSpot) then 
 			{
 			_aa = 0;
 			_Spot = _goodSpots select 0;
-			for [{_a = 0},{_a < (count _goodSpots)},{_a = _a + 1}] do
+			for [{_a = 0},{_a < (count _goodSpots)},{_a = _a + 1}] do 
 				{
 				_GS = _goodSpots select _a;
 				if (_a == 0) then {_Spot = _GS;_aa = 0};
@@ -361,7 +361,7 @@ _GS = [];
 				};
 
 			RydHQG_Roger = false;
-			_goodSpots set [_aa,0];
+			_goodSpots set [_aa,0]; 
 			_goodSpots = _goodSpots - [0];
 			_closestArr set [1,_goodSpots];
 			[_x,_Spot,_angleV] spawn G_GoDefRecon;
@@ -379,8 +379,8 @@ if (isNil ("RydHQG_Def")) then {RydHQG_Def = []};
 
 switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 	{
-	case true :
-		{
+	case true : 
+		{			
 			{
 			_isDef = _x getVariable "Defending";
 			if (isNil "_isDef") then {_isDef = false};
@@ -390,7 +390,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 				_closestArr = _defArray select 0;
 				_friend =  vehicle (leader _x);
 				_dstM = _friend distance (_closestArr select 0);
-
+					
 					{
 					_arrP = _x select 0;
 					_dstAct = _arrP distance _friend;
@@ -398,22 +398,22 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 					}
 				foreach _defArray;
 
-				_goodSpots = _closestArr select 2;_angleV = _closestArr select 5;_dXb = (_closestArr select 4) select 0;_dYb = (_closestArr select 4) select 1;
+				_goodSpots = _closestArr select 2;_angleV = _closestArr select 5;_dXb = (_closestArr select 4) select 0;_dYb = (_closestArr select 4) select 1;	
 				_DN = _closestArr select 3;
 
 				if ((count _goodSpots) == 0) exitwith {};
-				if not (_x in RydHQG_DefSpot) then
+				if not (_x in RydHQG_DefSpot) then 
 					{
 					_bb = 0;
 					_Spot = _goodSpots select 0;
-					for [{_b = 0},{_b < (count _goodSpots)},{_b = _b + 1}] do
+					for [{_b = 0},{_b < (count _goodSpots)},{_b = _b + 1}] do 
 						{
 						_GS = _goodSpots select _b;
 						if ((_Spot distance (vehicle (leader _x))) > (_GS distance (vehicle (leader _x)))) then {_Spot = _GS;_bb = _b};
 						};
 					sleep 0.1;
 					RydHQG_Roger = false;
-					_goodSpots set [_bb,0];
+					_goodSpots set [_bb,0]; 
 					_goodSpots = _goodSpots - [0];
 					_closestArr set [2,_goodSpots];
 					[_x,_Spot,_dXb,_dYb,_DN,_angleV] spawn G_GoDef;
@@ -430,7 +430,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 
 		while {((count _airDef) > (count RydHQG_AirInDef))} do
 			{
-
+			
 
 				{
 				_isDef = _x getVariable "Defending";
@@ -441,7 +441,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 					_closestArr = _defArray select 0;
 					_friend =  vehicle (leader _x);
 					_dstM = _friend distance (_closestArr select 0);
-
+						
 						{
 						_arrP = _x select 0;
 						_dstAct = _arrP distance _friend;
@@ -449,7 +449,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 						}
 					foreach _defArray;
 
-					_Spot = _closestArr select 0;
+					_Spot = _closestArr select 0;	
 
 					RydHQG_Roger = false;
 					_x setVariable [("Busy" + (str _x)), false];
@@ -466,12 +466,12 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 
 			if not (_isDef) then
 				{
-				if not (_x in RydHQG_Def) then
+				if not (_x in RydHQG_Def) then 
 					{
 					_closestArr = _defArray select 0;
 					_friend =  vehicle (leader _x);
 					_dstM = _friend distance (_closestArr select 0);
-
+						
 						{
 						_arrP = _x select 0;
 						_dstAct = _arrP distance _friend;
@@ -496,7 +496,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 					_precision = 20;
 					_sourcesCount = 1;
 					_expression = "Meadow";
-					switch (true) do
+					switch (true) do 
 						{
 						case (_x in RydHQG_InfG) : {_expression = "(1 + (2 * Houses)) * (1 + (1.5 * Forest)) * (1 + Trees) * (1 - Meadow) * (1 - (10 * sea))"};
 						case (not (_x in RydHQG_InfG)) : {_expression = "(1 + (2 * Meadow)) * (1 - Forest) * (1 - (0.5 * Trees)) * (1 - (10 * sea))"};
@@ -504,11 +504,11 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 					_Spot = selectBestPlaces [_position,_radius,_expression,_precision,_sourcesCount];
 					_Spot = _Spot select 0;
 					_Spot = _Spot select 0;
-					if ((random 100) > 70/(0.75 + (RydHQG_Fineness/2))) then
+					if ((random 100) > 70/(0.75 + (RydHQG_Fineness/2))) then 
 						{
 						_NR = _Spot nearRoads 200;
 						_cnt = 0;
-						if not ((count _NR) == 0) then
+						if not ((count _NR) == 0) then 
 							{
 							while {(true)} do
 								{
@@ -520,7 +520,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 								}
 							};
 						};
-
+					
 					RydHQG_Roger = false;
 					[_x,_Spot,_dXb,_dYb,_DN,_angleV] spawn G_GoDef;
 					waituntil {sleep 0.1;RydHQG_Roger};
@@ -530,7 +530,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 			}
 		foreach ((_LMCU - (RydHQG_DefSpot + RydHQG_RecDefSpot + RydHQG_DefRes) + RydHQG_NCCargoG + RydHQG_SupportG) - RydHQG_NoDef);
 		};
-	case false :
+	case false : 
 		{
 			{
 			_isDef = _x getVariable "Defending";
@@ -538,12 +538,12 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 
 			if not (_isDef) then
 				{
-				if not (_x in RydHQG_Def) then
+				if not (_x in RydHQG_Def) then 
 					{
 					_closestArr = _defArray select 0;
 					_friend =  vehicle (leader _x);
 					_dstM = _friend distance (_closestArr select 0);
-
+						
 						{
 						_arrP = _x select 0;
 						_dstAct = _arrP distance _friend;
@@ -564,7 +564,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 					_precision = 20;
 					_sourcesCount = 1;
 					_expression = "Meadow";
-					switch (true) do
+					switch (true) do 
 						{
 						case (_x in RydHQG_InfG) : {_expression = "(1 + (2 * Houses)) * (1 + (1.5 * Forest)) * (1 + Trees) * (1 - Meadow) * (1 - (10 * sea))"};
 						case (not (_x in RydHQG_InfG)) : {_expression = "(1 + (2 * Meadow)) * (1 - Forest) * (1 - (0.5 * Trees)) * (1 - (10 * sea))"};
@@ -572,11 +572,11 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 					_Spot = selectBestPlaces [_position,_radius,_expression,_precision,_sourcesCount];
 					_Spot = _Spot select 0;
 					_Spot = _Spot select 0;
-					if ((random 100) > 70/(0.75 + (RydHQG_Fineness/2))) then
+					if ((random 100) > 70/(0.75 + (RydHQG_Fineness/2))) then 
 						{
 						_NR = _Spot nearRoads 200;
 						_cnt = 0;
-						if not ((count _NR) == 0) then
+						if not ((count _NR) == 0) then 
 							{
 							while {(true)} do
 								{
@@ -588,7 +588,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 								}
 							};
 						};
-
+					
 					RydHQG_Roger = false;
 					[_x,_Spot,_dXb,_dYb,_DN,_angleV] spawn G_GoDef;
 					waituntil {sleep 0.1;RydHQG_Roger};
@@ -609,7 +609,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 					_closestArr = _defArray select 0;
 					_friend =  vehicle (leader _x);
 					_dstM = _friend distance (_closestArr select 0);
-
+						
 						{
 						_arrP = _x select 0;
 						_dstAct = _arrP distance _friend;
@@ -617,7 +617,7 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 						}
 					foreach _defArray;
 
-					_Spot = _closestArr select 0;
+					_Spot = _closestArr select 0;	
 
 					RydHQG_Roger = false;
 					_x setVariable [("Busy" + (str _x)), false];
@@ -629,14 +629,14 @@ switch ((random 100) >= (50/(0.5 + RydHQG_Fineness))) do
 			};
 		};
 	};
-
+	
 	{
 	_isDef = _x getVariable "Defending";
 	if (isNil "_isDef") then {_isDef = false};
 
 	if not (_isDef) then
 		{
-		if not (_x in RydHQG_Def) then
+		if not (_x in RydHQG_Def) then 
 			{
 			_posX = ((position leaderHQG) select 0) + (random 400) - 200;
 			_posY = ((position leaderHQG) select 1) + (random 400) - 200;

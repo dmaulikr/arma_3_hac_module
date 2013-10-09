@@ -26,16 +26,21 @@ if (isNil("RYD_AddTask")) then {
 				_task setSimpleTaskDescription _descr;
 				_task setSimpleTaskDestination _dstn
 			}else{
-				{	[nil,nil, "per", rSETTASKSTATE,_x,"Succeeded"] call RE;
+				{
+					// [nil,nil, "per", rSETTASKSTATE,_x,"Succeeded"] call RE;
+					call compile format["[{player removeSimpleTask '%1';},'BIS_fnc_Spawn',true,true] spawn BIS_fnc_MP;",_x];
 				} foreach _tasks;
 				_tName = (str (group _unit)) + (str (count _tasks)) + "HACtask";
 				_task = _tName;
-				[_unit,nil, "per", rCREATESIMPLETASK,_tName] call RE;
+				// [_unit,nil, "per", rCREATESIMPLETASK,_tName] call RE;
+				call compile format["[{_task = player createSimpleTask ['%1'];},'BIS_fnc_Spawn',true,true] spawn BIS_fnc_MP;",_tName];
 				_tasks = _unit getVariable ["HACAddedTasks",[]];
 				_tasks set [(count _tasks),_tName];
 				_unit setVariable ["HACAddedTasks",_tasks];
-				[nil,nil, "per", rSETSIMPLETASKDESCRIPTION, _tName,_descr] call RE;
-				[nil,nil, "per", rSETSIMPLETASKDESTINATION, _tName,_dstn] call RE;
+				// [nil,nil, "per", rSETSIMPLETASKDESCRIPTION, _tName,_descr] call RE;
+				//call compile format["[{%1 setSimpleTaskDescription %2;},'BIS_fnc_Spawn',true,true] spawn BIS_fnc_MP;",_task,_descr];
+				// [nil,nil, "per", rSETSIMPLETASKDESTINATION, _tName,_dstn] call RE;
+				//call compile format["[{%1 setSimpleTaskDestination %2;},'BIS_fnc_Spawn',true,true] spawn BIS_fnc_MP;",_task,_dstn];
 			};
 		};
 		_task

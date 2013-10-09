@@ -19,22 +19,22 @@ if not (isMultiplayer) then {
 	};
 }else{
 	if (not (_UL kbHasTopic "orders")) then {
-		[objNull,_UL,"loc",rKBADDTOPIC,"orders","modules\RYD_HAC\topics.bikb",""] call RE;
-		waituntil {[nil,_UL,"loc",rKBHASTOPIC,"orders"] call RE};
+		//[objNull,_UL,"loc",rKBADDTOPIC,"orders","modules\RYD_HAC\topics.bikb",""] call RE;
+		//waituntil {[nil,_UL,"loc",rKBHASTOPIC,"orders"] call RE};
 		sleep 0.5;
 	};
-	[objNull,_UL,"loc",rKBTELL,_HQ,"orders","First",true] call RE;
+	//[objNull,_UL,"loc",rKBTELL,_HQ,"orders","First",true] call RE;
 	sleep (2 + (random 1));
-	waituntil {[nil,_UL,"loc",rKBWASSAID,_HQ,"orders","First",5] call RE};
+	//waituntil {[nil,_UL,"loc",rKBWASSAID,_HQ,"orders","First",5] call RE};
 	sleep 1;
 	if ((isPlayer _UL) and (RydHQ_VoiceComm)) then {
-		[objNull,_HQ,"loc",rKBTELL,_UL,"orders","NewMessage",true] call RE;
-		waituntil {[nil,_HQ,"loc",rKBWASSAID,_UL,"orders","NewMessage",5] call RE};
+		//[objNull,_HQ,"loc",rKBTELL,_UL,"orders","NewMessage",true] call RE;
+		//waituntil {[nil,_HQ,"loc",rKBWASSAID,_UL,"orders","NewMessage",5] call RE};
 		sleep (2 + (random 1));
 		sleep (0.2 + (random 0.8));
 		_OK = "OK" + str (floor (random 5));
-		[objNull,_UL,"loc",rKBTELL,_HQ,"orders",_OK,true] call RE;
-		waituntil {[nil,_UL,"loc",rKBWASSAID,_HQ,"orders",_OK,5] call RE};
+		//[objNull,_UL,"loc",rKBTELL,_HQ,"orders",_OK,true] call RE;
+		//waituntil {[nil,_UL,"loc",rKBWASSAID,_HQ,"orders",_OK,5] call RE};
 		sleep (2 + (random 1));
 		sleep (0.2 + (random 0.8))
 	};

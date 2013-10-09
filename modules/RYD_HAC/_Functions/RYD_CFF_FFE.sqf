@@ -324,7 +324,7 @@ if (isNil("RYD_CFF_FFE")) then {
 				};
 				_i = "mark5" + str (_battery);
 				_i = createMarker [_i,_finalimpact];
-				_i setMarkerColor "ColorRedAlpha";
+				_i setMarkerColor "ColorRed";
 				_i setMarkerShape "ELLIPSE";
 				_i setMarkerSize [_spawndisp,_spawndisp];
 				_i = str _battery;

@@ -364,8 +364,8 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP2,_posYWP2]] call RE;
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Reach designated position. Try to avoid engaging in combat.", "Move", ""]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP2,_posYWP2]] call RE;
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Reach designated position. Try to avoid engaging in combat.", "Move", ""]] call RE
 			}
 		};
 
@@ -378,8 +378,8 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		else
 			{
-			[(leader _GDV),nil, "per", rSETSIMPLETASKDESTINATION, _Ctask,[_posXWP2,_posYWP2]] call RE;
-			[(leader _GDV),nil, "per", rSETSIMPLETASKDESCRIPTION, _Ctask,["Reach designated position. Try to avoid engaging in combat.", "Move", ""]] call RE
+			//[(leader _GDV),nil, "per", rSETSIMPLETASKDESTINATION, _Ctask,[_posXWP2,_posYWP2]] call RE;
+			//[(leader _GDV),nil, "per", rSETSIMPLETASKDESCRIPTION, _Ctask,["Reach designated position. Try to avoid engaging in combat.", "Move", ""]] call RE
 			}
 		};
 
@@ -435,8 +435,8 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP3,_posYWP3]] call RE;
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Reach designated position. Try to avoid engaging in combat.", "Move", ""]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP3,_posYWP3]] call RE;
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Reach designated position. Try to avoid engaging in combat.", "Move", ""]] call RE
 			}
 		};
 
@@ -449,8 +449,8 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		else
 			{
-			[(leader _GDV),nil, "per", rSETSIMPLETASKDESTINATION, _Ctask,[_posXWP3,_posYWP3]] call RE;
-			[(leader _GDV),nil, "per", rSETSIMPLETASKDESCRIPTION, _Ctask,["Disembark group at designated position.", "Move", ""]] call RE
+			//[(leader _GDV),nil, "per", rSETSIMPLETASKDESTINATION, _Ctask,[_posXWP3,_posYWP3]] call RE;
+			//[(leader _GDV),nil, "per", rSETSIMPLETASKDESCRIPTION, _Ctask,["Disembark group at designated position.", "Move", ""]] call RE
 			}
 		};
 
@@ -575,8 +575,8 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP4,_posYWP4]] call RE;
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Eliminate enemy at designated position.", "Eliminate", ""]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP4,_posYWP4]] call RE;
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Eliminate enemy at designated position.", "Eliminate", ""]] call RE
 			}
 		};
 
@@ -657,8 +657,8 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP3,_posYWP3]] call RE;
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP3,_posYWP3]] call RE;
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
 			}
 		};
 
@@ -701,7 +701,7 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP2,_posYWP2]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP2,_posYWP2]] call RE
 			}
 		};
 
@@ -738,7 +738,7 @@ if ((_ammo > 0) and not (_busy)) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP1,_posYWP1]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posXWP1,_posYWP1]] call RE
 			}
 		};
 

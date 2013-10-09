@@ -26,16 +26,17 @@ if (isNil("RYD_BBSimpleD")) then {
 					_ens = RydHQ_KnEnPos;
 					_frs = RydHQ_Friends;
 					switch (_x) do {
-						case (not (isNull leaderHQB) && leaderHQB) : {_ens = RydHQB_KnEnPos;_frs = RydHQB_Friends};
-						case (not (isNull leaderHQC) && leaderHQC) : {_ens = RydHQC_KnEnPos;_frs = RydHQC_Friends};
-						case (not (isNull leaderHQD) && leaderHQD) : {_ens = RydHQD_KnEnPos;_frs = RydHQD_Friends};
-						case (not (isNull leaderHQE) && leaderHQE) : {_ens = RydHQE_KnEnPos;_frs = RydHQE_Friends};
-						case (not (isNull leaderHQF) && leaderHQF) : {_ens = RydHQF_KnEnPos;_frs = RydHQF_Friends};
-						case (not (isNull leaderHQG) && leaderHQG) : {_ens = RydHQG_KnEnPos;_frs = RydHQG_Friends};
-						case (not (isNull leaderHQH) && leaderHQH) : {_ens = RydHQH_KnEnPos;_frs = RydHQH_Friends};
+						case (not (isNull leaderHQB) && not (isNil "leaderHQB")) : {_ens = RydHQB_KnEnPos;_frs = RydHQB_Friends};
+						case (not (isNull leaderHQC) && not (isNil "leaderHQC")) : {_ens = RydHQC_KnEnPos;_frs = RydHQC_Friends};
+						case (not (isNull leaderHQD) && not (isNil "leaderHQD")) : {_ens = RydHQD_KnEnPos;_frs = RydHQD_Friends};
+						case (not (isNull leaderHQE) && not (isNil "leaderHQE")) : {_ens = RydHQE_KnEnPos;_frs = RydHQE_Friends};
+						case (not (isNull leaderHQF) && not (isNil "leaderHQF")) : {_ens = RydHQF_KnEnPos;_frs = RydHQF_Friends};
+						case (not (isNull leaderHQG) && not (isNil "leaderHQG")) : {_ens = RydHQG_KnEnPos;_frs = RydHQG_Friends};
+						case (not (isNull leaderHQH) && not (isNil "leaderHQH")) : {_ens = RydHQH_KnEnPos;_frs = RydHQH_Friends};
 					};
 					_enPos = _enPos + _ens;
 				};
+				_lPos = [];
 				_lPos = (group _x) getVariable "LastCenter";
 				_frCenter = _lPos;
 				_midX = 0;

@@ -1,6 +1,6 @@
 _i = "";
 
-_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))};
+_unitG = _this select 0;_Spos = _unitG getvariable ("START" + (str _unitG));if (isNil ("_Spos")) then {_unitG setVariable [("START" + (str _unitG)),(position (vehicle (leader _unitG)))];_Spos = _unitG getVariable ("START" + (str _unitG))}; 
 _Trg = _this select 1;
 _isAttacked = (group _Trg) getvariable ("ArmorAttacked" + (str (group _Trg)));
 if (isNil ("_isAttacked")) then {_isAttacked = 0};
@@ -53,7 +53,7 @@ while {((_isWater) and (([_posX,_posY] distance _PosObj1) >= 50))} do
 
 _isWater = surfaceIsWater [_posX,_posY];
 
-if (_isWater) exitwith
+if (_isWater) exitwith 
 	{
 	RydHQG_AttackAv = RydHQG_AttackAv + [(_unitG)];
 	_unitG setVariable [("Busy" + (str _unitG)),false];
@@ -68,7 +68,7 @@ if (isPlayer _UL) then {[_UL,leaderHQG] spawn VoiceComm;sleep 3;waituntil {sleep
 
 if ((RydHQG_Debug) or (isPlayer (leader _unitG))) then
 	{
-	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","mil_dot","Arm G"," - ATTACK"] call RYD_Mark;
+	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","DOT","Arm G"," - ATTACK"] call RYD_Mark;
 	};
 
 _task = [(leader _unitG),["Search and destroy enemy.", "S&D", ""],[_posX,_posY]] call RYD_AddTask;
@@ -78,15 +78,15 @@ _wp = [_unitG,[_posX,_posY],"MOVE","AWARE","RED","NORMAL"] call RYD_WPadd;
 if (RydxHQ_SynchroAttack) then
 	{
 	[_wp,_Trg] call RYD_WPSync;
-
-
+	 
+	 
 	};
 
 _cause = [_unitG,6,true,0,24,[],false] call RYD_Wait;
 _timer = _cause select 0;
 _alive = _cause select 1;
 
-if not (_alive) exitwith
+if not (_alive) exitwith 
 	{
 	if ((RydHQG_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	[_Trg,"ArmorAttacked"] call RYD_VarReductor
@@ -126,7 +126,7 @@ _cause = [_unitG,6,true,0,24,[],false] call RYD_Wait;
 _timer = _cause select 0;
 _alive = _cause select 1;
 
-if not (_alive) exitwith
+if not (_alive) exitwith 
 	{
 	if ((RydHQG_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	[_Trg,"ArmorAttacked"] call RYD_VarReductor

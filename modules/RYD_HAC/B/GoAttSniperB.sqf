@@ -252,8 +252,8 @@ if (isPlayer (leader _unitG)) then
 		}
 	else
 		{
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,(position _Trg)] call RE;
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Stay hidden, where you are and snipe any spotted enemy units.", "Snipe", ""]] call RE
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,(position _Trg)] call RE;
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Stay hidden, where you are and snipe any spotted enemy units.", "Snipe", ""]] call RE
 		}
 	};
 
@@ -321,8 +321,8 @@ if (isPlayer (leader _unitG)) then
 		}
 	else
 		{
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Spos] call RE;
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Withdraw.", "Move", ""]] call RE
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Spos] call RE;
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Withdraw.", "Move", ""]] call RE
 		};
 	};
 
@@ -343,8 +343,8 @@ if (_unitG in RydHQB_Garrison) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Spos] call RE;
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Spos] call RE;
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
 			}
 		};
 

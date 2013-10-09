@@ -804,7 +804,7 @@ while {not ((isNull RydHQD) or (RydHQD_Surrender))} do
 				{
 				[_x] call RYD_WPdel;
 				_x setVariable [("inPanic" + (str _x)), true];
-				if (RydHQD_DebugII) then {_i = [(getPosATL (vehicle (leader _x))),_x,"markPanic","ColorYellow","ICON","mil_dot","D!","D!",[0.5,0.5]] call RYD_Mark};
+				if (RydHQD_DebugII) then {_i = [(getPosATL (vehicle (leader _x))),_x,"markPanic","ColorYellow","ICON","DOT","D!","D!",[0.5,0.5]] call RYD_Mark};
 				_x setVariable [("Busy" + (str _x)), true];
 
 				_UL = leader _x;
@@ -923,7 +923,7 @@ while {not ((isNull RydHQD) or (RydHQD_Surrender))} do
 			}
 		};
 
-	if (((count RydHQD_KnEnemies) > 0) and ((count RydHQD_ArtG) > 0)) then {[RydHQD_ArtG,RydHQD_KnEnemies,(RydHQD_EnHArmor + RydHQD_EnMArmor + RydHQD_EnLArmor),RydHQD_Friends,RydHQD_Debug,leaderHQD] call RYD_CFF};
+	if (((count RydHQD_KnEnemies) > 0) and ((count RydHQD_ArtG) > 0) and (RydHQD_ArtyShells > 0)) then {[RydHQD_ArtG,RydHQD_KnEnemies,(RydHQD_EnHArmor + RydHQD_EnMArmor + RydHQD_EnLArmor),RydHQD_Friends,RydHQD_Debug,leaderHQD] call RYD_CFF};
 
 	if (isNil ("RydHQD_Order")) then {RydHQD_Order = "ATTACK"};
 	_gauss100 = (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10) + (random 10);

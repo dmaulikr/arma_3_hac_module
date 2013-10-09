@@ -97,7 +97,7 @@ if (isPlayer _UL) then {[_UL,leaderHQ] spawn VoiceComm;sleep 3;waituntil {sleep 
 
 if ((RydHQ_Debug) or (isPlayer (leader _unitG))) then
 	{
-	_i = [_DefPos,_unitG,"markDef","ColorRedAlpha","ICON","mil_dot","DRes A"," - DEFEND POSITION"] call RYD_Mark
+	_i = [_DefPos,_unitG,"markDef","ColorRed","ICON","mil_dot","DRes A"," - DEFEND POSITION"] call RYD_Mark
 	};
 
 _AV = assignedVehicle _UL;
@@ -305,8 +305,8 @@ waituntil
 				}
 			else
 				{
-				[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_RnfP] call RE;
-				[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Reinforce defense of designated position.", "Move", ""]] call RE
+				//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_RnfP] call RE;
+				//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Reinforce defense of designated position.", "Move", ""]] call RE
 				}
 			};
 
@@ -319,7 +319,7 @@ waituntil
 
 		if ((RydHQ_Debug) or (isPlayer (leader _unitG))) then
 			{
-			_i = [_RnfP,_unitG,"markReinf","ColorRedAlpha","ICON","mil_dot","Reinf A"," - REINFORCE POSITION",[0.3,0.3]] call RYD_Mark
+			_i = [_RnfP,_unitG,"markReinf","ColorRed","ICON","mil_dot","Reinf A"," - REINFORCE POSITION",[0.3,0.3]] call RYD_Mark
 			}
 		};
 
