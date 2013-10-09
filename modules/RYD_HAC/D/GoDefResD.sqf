@@ -305,8 +305,8 @@ waituntil
 				}
 			else
 				{
-				[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_RnfP] call RE;
-				[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Reinforce defense of designated position.", "Move", ""]] call RE
+				//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_RnfP] call RE;
+				//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Reinforce defense of designated position.", "Move", ""]] call RE
 				}
 			};
 

@@ -36,7 +36,6 @@ if (isNil("RYD_BBSimpleD")) then {
 					};
 					_enPos = _enPos + _ens;
 				};
-				_lPos = [];
 				_lPos = (group _x) getVariable "LastCenter";
 				_frCenter = _lPos;
 				_midX = 0;

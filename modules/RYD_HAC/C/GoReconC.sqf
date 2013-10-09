@@ -251,8 +251,8 @@ while {(_nothing)} do
 				}
 			else
 				{
-				[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_End] call RE;
-				[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
+				//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_End] call RE;
+				//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
 				}
 			};
 

@@ -46,7 +46,7 @@ RydHQF_VCDone = false;
 if (isPlayer _UL) then {[_UL,leaderHQF] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQF_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
 _alive = false;
-if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then 
+if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then
 	{
 	_i = [[_posX,_posY],_unitG,"markAmmoSupp","ColorKhaki","ICON","End"," Reammo F"," - AMMO SUPPORT",[0.6,0.6],270] call RYD_Mark
 	};
@@ -83,7 +83,7 @@ if (_drop) then
 			_alive = _cause select 1;
 
 			if not (_alive) exitwith {if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteVehicle _ammoBox;deleteMarker ("markAmmoSupp" + str (_unitG))};RydHQF_AmmoPoints = RydHQF_AmmoPoints - [_Trg];_unitG setVariable [("Busy" + _unitvar), false];};
-			if (_timer > 24) then 
+			if (_timer > 24) then
 				{
 				[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0];
 				_ammoBox setPos _abPos
@@ -104,7 +104,7 @@ if (_drop) then
 			//_unit setVariable ["KeepAlt",false];
 
 			if not (_alive) exitwith {if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAmmoSupp" + str (_unitG))};RydHQF_AmmoPoints = RydHQF_AmmoPoints - [_Trg];_unitG setVariable [("Busy" + _unitvar), false];};
-			if (_timer > 24) then 
+			if (_timer > 24) then
 				{
 				[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0]
 				}
@@ -133,7 +133,7 @@ else
 		{
 		[_unitG] call RYD_WPdel;
 
-		if not (_counter == 0) then 
+		if not (_counter == 0) then
 			{
 			_posX = ((position _unit) select 0) + (random 100) -  50;
 			_posY = ((position _unit) select 1) + (random 100) -  50;
@@ -150,7 +150,7 @@ else
 				_cnt = _cnt + 1;
 				};
 
-			if (isPlayer (leader _unitG)) then 
+			if (isPlayer (leader _unitG)) then
 				{
 				if not (isMultiplayer) then
 					{
@@ -158,7 +158,7 @@ else
 					}
 				else
 					{
-					[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posX,_posY]] call RE;
+					//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posX,_posY]] call RE;
 					}
 				}
 			};
@@ -176,7 +176,7 @@ else
 		_alive = _cause select 1;
 
 		if not (_alive) exitwith {if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAmmoSupp" + str (_unitG))};RydHQF_AmmoPoints = RydHQF_AmmoPoints - [_Trg];_unitG setVariable [("Busy" + _unitvar), false];};
-		if (_timer > 24) then {_counter = _counter + 1;[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0]} else {_counter = _counter + 1}; 
+		if (_timer > 24) then {_counter = _counter + 1;[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0]} else {_counter = _counter + 1};
 
 		_UL = leader _unitG;if not (isPlayer _UL) then {if ((_timer <= 24) and (_counter == 1)) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdFinal,"OrdFinal"] call RYD_AIChatter}}};
 
@@ -191,7 +191,7 @@ _tp = "MOVE";
 if ((RydHQF_SupportWP) and not (_drop)) then {_tp = "SUPPORT"};
 _pos = [_posX,_posY];
 
-if (_drop) then 
+if (_drop) then
 	{
 	RydHQF_AmmoPoints = RydHQF_AmmoPoints - [_Trg];
 	_pos = _startpos;
@@ -204,8 +204,8 @@ if (_drop) then
 			}
 		else
 			{
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_pos] call RE;
-			[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_pos] call RE;
+			//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return.", "Move", ""]] call RE
 			}
 		}
 	};
@@ -220,7 +220,7 @@ _timer = _cause select 0;
 _alive = _cause select 1;
 
 if not (_alive) exitwith {if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAmmoSupp" + str (_unitG))};RydHQF_AmmoPoints = RydHQF_AmmoPoints - [_Trg];_unitG setVariable [("Busy" + _unitvar), false];};
-if (_timer > 24) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0]}; 
+if (_timer > 24) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0]};
 
 RydHQF_AmmoPoints = RydHQF_AmmoPoints - [_Trg];
 if ((isPlayer (leader _unitG)) and not (isMultiplayer)) then {(leader _unitG) removeSimpleTask _task};

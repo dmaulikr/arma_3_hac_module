@@ -40,9 +40,9 @@ _UL = leader _unitG;
 RydHQF_VCDone = false;
 if (isPlayer _UL) then {[_UL,leaderHQF] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQF_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then 
+if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then
 	{
-	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","DOT","Air F"," - ATTACK"] call RYD_Mark
+	_i = [[_posX,_posY],_unitG,"markAttack","ColorRed","ICON","mil_dot","Air F"," - ATTACK"] call RYD_Mark
 	};
 
 _task = [(leader _unitG),["Search and destroy enemy.", "S&D", ""],[_posX,_posY]] call RYD_AddTask;
@@ -51,7 +51,7 @@ _wp = [_unitG,[_posX,_posY],"SAD","COMBAT","RED","NORMAL",["true", "deletewaypoi
 
 _lasT = ObjNull;
 
-if (_unitG in RydHQF_BAirG) then 
+if (_unitG in RydHQF_BAirG) then
 	{
 	_eSide = side _unitG;
 	_wp waypointAttachVehicle _Trg;
@@ -63,7 +63,7 @@ if (_unitG in RydHQF_BAirG) then
 	_tX = (_tPos select 0) + (random 60) - 30;
 	_tY = (_tPos select 1) + (random 60) - 30;
 
-	_lasT = createVehicle [_tgt, [_tX,_tY,0], [], 0, "CAN_COLLIDE"]; 
+	_lasT = createVehicle [_tgt, [_tX,_tY,0], [], 0, "CAN_COLLIDE"];
 
 	[_Trg,_lasT,_unitG] spawn
 		{
@@ -89,7 +89,7 @@ if (_unitG in RydHQF_BAirG) then
 			_ct = _ct + 1
 			};
 
-		if (not (isNull _unitG) and (({alive _x} count (units _unitG)) > 0)) then 
+		if (not (isNull _unitG) and (({alive _x} count (units _unitG)) > 0)) then
 			{
 			waitUntil
 				{
@@ -109,7 +109,7 @@ _cause = [_unitG,6,true,0,24,[],false] call RYD_Wait;
 _timer = _cause select 0;
 _alive = _cause select 1;
 
-if not (_alive) exitwith 
+if not (_alive) exitwith
 	{
 	if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	if not (isNull _lasT) then {deleteVehicle _lasT};
@@ -127,8 +127,8 @@ if (isPlayer (leader _unitG)) then
 		}
 	else
 		{
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Posland] call RE;
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return to the landing site.", "Move", ""]] call RE
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Posland] call RE;
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return to the landing site.", "Move", ""]] call RE
 		}
 	};
 
@@ -141,7 +141,7 @@ _cause = [_unitG,6,true,0,24,[],false] call RYD_Wait;
 _timer = _cause select 0;
 _alive = _cause select 1;
 
-if not (_alive) exitwith 
+if not (_alive) exitwith
 	{
 	if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markAttack" + str (_unitG))};
 	[_Trg,"AirAttacked"] call RYD_VarReductor

@@ -43,7 +43,7 @@ _UL = leader _unitG;
 RydHQF_VCDone = false;
 if (isPlayer _UL) then {[_UL,leaderHQF] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQF_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then 
+if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then
 	{
 	_i = [[_posX,_posY],_unitG,"markMedSupp","ColorKhaki","ICON","Destroy"," Medic F"," - MEDICAL SUPPORT",[0.6,0.6]] call RYD_Mark
 	};
@@ -53,10 +53,10 @@ _task = [(leader _unitG),["Give medical aid nearby troops. Stay in this area.", 
 _counter = 0;
 while {(_counter <= 3)} do
 	{
-	
+
 	[_unitG] call RYD_WPdel;
 
-	if not (_counter == 0) then 
+	if not (_counter == 0) then
 		{
 		_posX = ((position _unit) select 0) + (random 100) -  50;
 		_posY = ((position _unit) select 1) + (random 100) -  50;
@@ -73,7 +73,7 @@ while {(_counter <= 3)} do
 			_cnt = _cnt + 1;
 			};
 
-		if (isPlayer (leader _unitG)) then 
+		if (isPlayer (leader _unitG)) then
 			{
 			if not (isMultiplayer) then
 				{
@@ -81,7 +81,7 @@ while {(_counter <= 3)} do
 				}
 			else
 				{
-				[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posX,_posY]] call RE
+				//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posX,_posY]] call RE
 				}
 			}
 		};
@@ -100,7 +100,7 @@ while {(_counter <= 3)} do
 	_alive = _cause select 1;
 
 	if not (_alive) exitwith {if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markMedSupp" + str (_unitG))};RydHQF_MedPoints = RydHQF_MedPoints - [_Trg];_unitG setVariable [("Busy" + _unitvar), false];};
-	if (_timer > 24) then {_counter = _counter + 1;[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0]} else {_counter = _counter + 1}; 
+	if (_timer > 24) then {_counter = _counter + 1;[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0]} else {_counter = _counter + 1};
 
 	_UL = leader _unitG;if not (isPlayer _UL) then {if ((_timer <= 24) and (_counter == 1)) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdFinal,"OrdFinal"] call RYD_AIChatter}}};
 
@@ -120,7 +120,7 @@ _timer = _cause select 0;
 _alive = _cause select 1;
 
 if not (_alive) exitwith {if ((RydHQF_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markMedSupp" + str (_unitG))};RydHQF_MedPoints = RydHQF_MedPoints - [_Trg];_unitG setVariable [("Busy" + _unitvar), false];};
-if (_timer > 24) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle _UL), 0]}; 
+if (_timer > 24) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle _UL), 0]};
 
 RydHQF_MedPoints = RydHQF_MedPoints - [_Trg];
 if ((isPlayer (leader _unitG)) and not (isMultiplayer)) then {(leader _unitG) removeSimpleTask _task};

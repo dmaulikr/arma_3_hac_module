@@ -10,7 +10,7 @@ _startpos = position _unit;
 
 _unitG = group (assigneddriver _unit);
 
- 
+
 
 _cis = _unit;
 
@@ -45,7 +45,7 @@ _UL = leader _unitG;
 RydHQD_VCDone = false;
 if (isPlayer _UL) then {[_UL,leaderHQD] spawn VoiceComm;sleep 3;waituntil {sleep 0.1;(RydHQD_VCDone)}} else {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdConf,"OrdConf"] call RYD_AIChatter}};
 
-if ((RydHQD_Debug) or (isPlayer (leader _unitG))) then 
+if ((RydHQD_Debug) or (isPlayer (leader _unitG))) then
 	{
 	_i = [[_posX,_posY],_unitG,"markFuelSupp","ColorKhaki","ICON","End"," Refuel D"," - FUEL SUPPORT",[0.6,0.6]] call RYD_Mark
 	};
@@ -58,7 +58,7 @@ while {(_counter <= 3)} do
 	{
 	[_unitG] call RYD_WPdel;
 
-	if not (_counter == 0) then 
+	if not (_counter == 0) then
 		{
 		_posX = ((position _unit) select 0) + (random 100) -  50;
 		_posY = ((position _unit) select 1) + (random 100) -  50;
@@ -75,7 +75,7 @@ while {(_counter <= 3)} do
 			_cnt = _cnt + 1;
 			};
 
-		if (isPlayer (leader _unitG)) then 
+		if (isPlayer (leader _unitG)) then
 			{
 			if not (isMultiplayer) then
 				{
@@ -83,7 +83,7 @@ while {(_counter <= 3)} do
 				}
 			else
 				{
-				[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posX,_posY]] call RE
+				//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,[_posX,_posY]] call RE
 				}
 			}
 		};
@@ -104,7 +104,7 @@ while {(_counter <= 3)} do
 	if not (_alive) exitwith {if ((RydHQD_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markFuelSupp" + str (_unitG))};RydHQD_FuelPoints = RydHQD_FuelPoints - [_Trg];_unitG setVariable [("Busy" + _unitvar), false];};
 	if (_timer > 24) then {_counter = _counter + 1;[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle (leader _unitG)), 0]} else {_counter = _counter + 1};
 
-	_UL = leader _unitG;if not (isPlayer _UL) then {if ((_timer <= 24) and (_counter == 1)) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdFinal,"OrdFinal"] call RYD_AIChatter}}}; 
+	_UL = leader _unitG;if not (isPlayer _UL) then {if ((_timer <= 24) and (_counter == 1)) then {if ((random 100) < RydxHQ_AIChatDensity) then {[_UL,RydxHQ_AIC_OrdFinal,"OrdFinal"] call RYD_AIChatter}}};
 
 	if (((fuel _Trg) > 0.1) or ((damage _Trg) >= 0.9) or (isNull (group (assigneddriver (_this select 1))))) then {_dried = _dried - [_Trg]};
 	};
@@ -123,7 +123,7 @@ _alive = _cause select 1;
 
 if (((_cis distance _Trg) < 50) and ((fuel _Trg) == 0)) then {_Trg setfuel 0.09};
 if not (_alive) exitwith {if ((RydHQD_Debug) or (isPlayer (leader _unitG))) then {deleteMarker ("markFuelSupp" + str (_unitG))};RydHQD_FuelPoints = RydHQD_FuelPoints - [_Trg];_unitG setVariable [("Busy" + _unitvar), false];};
-if (_timer > 24) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle _UL), 0]}; 
+if (_timer > 24) then {[_unitG, (currentWaypoint _unitG)] setWaypointPosition [position (vehicle _UL), 0]};
 
 RydHQD_FuelPoints = RydHQD_FuelPoints - [_Trg];
 if ((isPlayer (leader _unitG)) and not (isMultiplayer)) then {(leader _unitG) removeSimpleTask _task};

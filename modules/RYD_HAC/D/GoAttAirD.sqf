@@ -127,8 +127,8 @@ if (isPlayer (leader _unitG)) then
 		}
 	else
 		{
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Posland] call RE;
-		[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return to the landing site.", "Move", ""]] call RE
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESTINATION, _task,_Posland] call RE;
+		//[(leader _unitG),nil, "per", rSETSIMPLETASKDESCRIPTION, _task,["Return to the landing site.", "Move", ""]] call RE
 		}
 	};
 
